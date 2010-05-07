@@ -43,7 +43,7 @@ module FBGraph
     end
   
     def delete
-      @params.merge!(:method => 'delete')
+      @params = {:method => 'delete'}
       uri = build_open_graph_uri(@objects , @connection_type , @params)
       result = @client.consumer.post(uri)
       return parsed  ? JSON.parse(result) : result
