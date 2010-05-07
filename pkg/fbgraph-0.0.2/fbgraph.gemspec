@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Fbgraph", "--main", "README"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{fbgraph}
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{A Gem for Facebook Open Graph API}
 
   if s.respond_to? :specification_version then

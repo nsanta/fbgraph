@@ -26,7 +26,7 @@ module FBGraph
    CONNECTION_TYPES.each do |object|
      class_eval  <<-METHOD
        def #{object}
-         connection(#{object})
+         connection('#{object}')
          self
        end
      METHOD
