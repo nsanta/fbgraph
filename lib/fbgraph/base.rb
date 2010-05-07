@@ -16,7 +16,7 @@ module FBGraph
     end
    
   
-    def with(connection_type)
+    def connection(connection_type)
       @connection_type = connection_type
       return self
     end
@@ -39,14 +39,13 @@ module FBGraph
     end
   
   
-    def publish
+    def publish(parsed = true)
+      consume!(:post , parsed)
     end
   
-    def delete
+    def delete(parsed = true)
       @params = {:method => 'delete'}
-      uri = build_open_graph_uri(@objects , @connection_type , @params)
-      result = @client.consumer.post(uri)
-      return parsed  ? JSON.parse(result) : result
+      consume!(:post, parsed)
     end
   
     private
@@ -57,6 +56,10 @@ module FBGraph
       request
     end
     
-    
+    def consume!(verb, parse)
+      uri = build_open_graph_uri(@objects , @connection_type , @params)
+      result = @client.consumer.send(verb,uri)
+      return parsed  ? JSON.parse(result) : result
+    end
   end  
 end
