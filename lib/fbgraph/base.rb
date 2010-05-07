@@ -39,7 +39,7 @@ module FBGraph
     end
   
   
-    def publish(data ,parsed = true)
+    def publish(data = {},parsed = true)
       @params.merge!(data)
       uri = build_open_graph_uri(@objects , @connection_type)
       result = @client.consumer.post(uri ,  @params)
