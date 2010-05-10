@@ -33,7 +33,7 @@ module FBGraph
         @params.merge!({:ids => ids.join(',')})
         uri = "/"
       elsif @objects.is_a? String
-        uri = build_open_graph_uri(@objects , @connection_type)
+        uri = build_open_graph_path(@objects , @connection_type)
       end
       puts "FBGRAPH [GET]: #{uri}"
       result = @client.consumer.get(uri)
@@ -43,14 +43,14 @@ module FBGraph
   
     def publish(data = {},parsed = true)
       @params.merge!(data)
-      uri = build_open_graph_uri(@objects , @connection_type)
+      uri = build_open_graph_path(@objects , @connection_type)
       puts "FBGRAPH [POST]: #{uri}"
       result = @client.consumer.post(uri ,  @params)
       return parsed  ? JSON.parse(result) : result
     end
   
     def delete(parsed = true)
-      uri = build_open_graph_uri(@objects , nil)
+      uri = build_open_graph_path(@objects , nil)
       puts "FBGRAPH [DELETE]: #{uri}"
       result = @client.consumer.delete(uri ,  @params)
       return parsed  ? JSON.parse(result) : result
@@ -68,7 +68,7 @@ module FBGraph
     
     private
     
-    def build_open_graph_uri(objects,connection_type = nil , params = {})
+    def build_open_graph_path(objects,connection_type = nil , params = {})
       request = "/" + [objects , connection_type].compact.join('/')
       request += "?"+params.to_a.map{|p| p.join('=')}.join('&') unless params.empty?
       request
