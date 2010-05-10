@@ -6,6 +6,7 @@ module FBGraph
     
     def initialize(client)
       @client = client
+      @params = {}
     end
 
 
@@ -34,7 +35,8 @@ module FBGraph
       elsif @objects.is_a? String
         uri = build_open_graph_uri(@objects , @connection_type)
       end
-      result = @client.consumer.get(uri ,  @params)
+      puts "FBGRAPH [GET]: #{uri}"
+      result = @client.consumer.get(uri)
       return parsed  ? JSON.parse(result) : result
     end
   
@@ -42,20 +44,34 @@ module FBGraph
     def publish(data = {},parsed = true)
       @params.merge!(data)
       uri = build_open_graph_uri(@objects , @connection_type)
+      puts "FBGRAPH [POST]: #{uri}"
       result = @client.consumer.post(uri ,  @params)
       return parsed  ? JSON.parse(result) : result
     end
   
     def delete(parsed = true)
       uri = build_open_graph_uri(@objects , nil)
+      puts "FBGRAPH [DELETE]: #{uri}"
       result = @client.consumer.delete(uri ,  @params)
       return parsed  ? JSON.parse(result) : result
     end
-  
+
+    %w(limit offset until since).each do |paging|
+      class_eval <<-PAGING
+        def #{paging}(value)
+          @params[:#{paging}] = value
+        end
+        PAGING
+      
+    end
+
+    
     private
     
-    def build_open_graph_uri(objects,connection_type = nil)
-      "/" + [objects, connection_type].compact.join('/')
+    def build_open_graph_uri(objects,connection_type = nil , params = {})
+      request = "/" + [objects , connection_type].compact.join('/')
+      request += "?"+params.to_a.map{|p| p.join('=')}.join('&') unless params.empty?
+      request
     end
 
   end  

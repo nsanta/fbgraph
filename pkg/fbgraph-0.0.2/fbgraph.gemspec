@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nicolas Santa"]
-  s.date = %q{2010-05-07}
+  s.date = %q{2010-05-10}
   s.description = %q{A Gem for Facebook Open Graph API}
   s.email = %q{nicolas55ar@gmail.com}
   s.extra_rdoc_files = ["README", "lib/fbgraph.rb", "lib/fbgraph/authorization.rb", "lib/fbgraph/base.rb", "lib/fbgraph/client.rb", "lib/fbgraph/search.rb", "lib/fbgraph/selection.rb"]
