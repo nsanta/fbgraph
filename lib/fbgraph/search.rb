@@ -1,8 +1,12 @@
 module FBGraph
   class Search < Base
+
+    def initialize(client)
+      @objects = 'search'
+      super(client)
+    end
     
     def query(q)
-      @objects = 'search'
       @params = {:q => q}
       return self
     end

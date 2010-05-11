@@ -2,7 +2,7 @@ module FBGraph
   
   class Base
     
-    attr_reader :objects , :connection_type
+    attr_reader :objects , :connection_type 
     
     def initialize(client)
       @client = client
@@ -22,11 +22,19 @@ module FBGraph
       return self
     end
     
-    def params(params)
-      @params = params
+    def params= (ps)
+      @params = ps
       return self
     end  
-      
+
+    def params
+      @params
+    end
+    
+    def param (pm)
+      @params.merge!(pm)
+      return self
+    end  
 
     def info!(parsed = true)
       if @objects.is_a? Array
@@ -62,7 +70,6 @@ module FBGraph
           @params[:#{paging}] = value
         end
         PAGING
-      
     end
 
     
