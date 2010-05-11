@@ -68,7 +68,11 @@ describe FBGraph do
         end
       end
 
-      describe '.realtime'
+      describe '.realtime' do
+        it 'should return a FBGraph::Search object' do
+          @client.realtime.class.should == FBGraph::Realtime
+        end
+      end
 
       describe '.oauth_client' do
         it 'should return a OAuth2::Client object' do

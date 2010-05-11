@@ -34,7 +34,7 @@ module FBGraph
     end 
 
 
-    alias_method :publish! , :subcribe!
+    alias_method :subscribe! , :publish! 
     
     private
     
