@@ -21,7 +21,7 @@ h2. Example Apps
 
 h2. Usage
 
-p.FBGraph supports the most (no analytics yet) features of Facebook Open Graph API: developers.facebook.com/docs/reference/api/
+p. FBGraph supports the most (no analytics yet) features of Facebook Open Graph API: developers.facebook.com/docs/reference/api/
 
 h3. Initialization
 
@@ -34,12 +34,19 @@ p. With a token
 notextile. <code>client = FBGraph::Client.new(:client_id => 'client_id',:secret_id =>'secret_id' ,:token => token)</code>
 
 
+p. All methods are chainable
+
+Examples:
+
+notextile. <code>client.selection.me.photos.until(Time.now.to_s).since(3.days.ago).limit(10).info</code>
+notextile. <code>client.selection.user('id').videos.offset(10).info</code>
+notextile. <code>client.search.query('q').on('users').limit(20).info</code>
 
 h3. Authorization
 
-h4. client.authorization.callback_url
+h4. client.authorization.authorize_url
 
-p. returns the callback_url
+p. returns the authorize url
 
 notextile. <code> redirect_to client.authorization.authorize_url(:redirect_uri => callback_url , :scope => 'email,user_photos,friends_photos')</code>
 
@@ -52,20 +59,98 @@ notextile. <code> access_token = client.authorization.process_callback(params[:c
 
 h3. Selection
 
+
+h4. client.selection.info!
+
+p. request with GET for information and return the response parsed with JSON. You can disable the parsing passing false as a first and unique parameter
+
+notextile. <code> user_info = client.selection.me.info! </code>
+
+
 h3. Publishing
+
+h4. client.selection.publish!
+
+p. request with POST for publishing and return the response parsed with JSON. You can disable the parsing passing false as a first and unique parameter
+
+notextile. <code> client.selection.post('id').comments.params(:message => 'comment test').publish! </code>
+
+p. OR
+
+notextile. <code> client.selection.post('id').comments.publish!(:message => 'comment test') </code>
+
 
 h3. Deletion
 
+h4. client.selection.delete!
+
+p. request with DELETE for deletion and return the response parsed with JSON. You can disable the parsing passing false as a first and unique parameter
+
+notextile. <code> client.selection.post('id').delete!</code>
+
+
 h3. Picture
+
+
+h4. client.selection.picture
+
+p. return the object picture url 
+
+notextile. <code> client.selection.me.picture </code>
+
 
 h3. Paging
 
+h4. client.selection.limit
+
+
+notextile. <code> client.selection.me.photos.limit(3).info! </code>
+
+h4. client.selection.offset
+
+
+notextile. <code> client.selection.me.photos.offset(10).info! </code>
+
+h4. client.selection.until
+
+
+notextile. <code> client.selection.me.photos.until(Time.now.to_s).info! </code>
+
+h4. client.selection.since
+
+
+notextile. <code> client.selection.me.photos.since(3.days.ago).info! </code>
+
+
+h3. Search
+
+h4. client.search.query('query').info!
+
+p.  Get the search results 
+
+notextile. <code> results = client.search.query('facebook').info! </code>
+
+
+h4. client.search.query('query')on('type').info!
+
+p.  Get the search results by type
+
+notextile. <code> results = client.search.query('facebook').on('home').info! </code>
+
+
 h3. RealTime Updates
 
-h4. TODO
+h4. not documented yet
 
 h3. Analytics
 
-h4. TODO
+h4. not documented yet
 
 h3. Advanced
+
+h4. not documented yet
+
+
+h2. Contributions
+
+p. Just do a pull request with the repo in sync.
