@@ -33,13 +33,14 @@ p. With a token
 
 notextile. <code>client = FBGraph::Client.new(:client_id => 'client_id',:secret_id =>'secret_id' ,:token => token)</code>
 
-
 p. All methods are chainable
 
 Examples:
 
 notextile. <code>client.selection.me.photos.until(Time.now.to_s).since(3.days.ago).limit(10).info</code>
+
 notextile. <code>client.selection.user('id').videos.offset(10).info</code>
+
 notextile. <code>client.search.query('q').on('users').limit(20).info</code>
 
 h3. Authorization
@@ -59,6 +60,25 @@ notextile. <code> access_token = client.authorization.process_callback(params[:c
 
 h3. Selection
 
+h4. Accessing objects with connection types.
+
+p. All objects and their connections can be accesed
+
+Examples:
+
+notextile. <code> client.selection.me.home.info!</code>
+
+notextile. <code> client.selection.user('id').photos.info!</code>
+
+notextile. <code> client.selection.photo('id').comments.info!</code>
+
+notextile. <code> client.selection.page('id').info!</code>
+
+p. Also you can get results of more than 1 objects
+
+Example:
+
+notextile. <code> client.selection.page.info!</code>
 
 h4. client.selection.info!
 
