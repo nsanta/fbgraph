@@ -28,7 +28,7 @@ module FBGraph
     end  
       
 
-    def info(parsed = true)
+    def info!(parsed = true)
       if @objects.is_a? Array
         @params.merge!({:ids => ids.join(',')})
         uri = "/"
@@ -41,7 +41,7 @@ module FBGraph
     end
   
   
-    def publish(data = {},parsed = true)
+    def publish!(data = {},parsed = true)
       @params.merge!(data)
       uri = build_open_graph_path(@objects , @connection_type)
       puts "FBGRAPH [POST]: #{uri}"
@@ -49,7 +49,7 @@ module FBGraph
       return parsed  ? JSON.parse(result) : result
     end
   
-    def delete(parsed = true)
+    def delete!(parsed = true)
       uri = build_open_graph_path(@objects , nil)
       puts "FBGRAPH [DELETE]: #{uri}"
       result = @client.consumer.delete(uri ,  @params)

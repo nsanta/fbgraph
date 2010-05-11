@@ -25,6 +25,10 @@ module FBGraph
       def search
         FBGraph::Search.new(self)
       end
+
+      def realtime
+        FBGraph::Realtime.new(self)
+      end
       
       
       def oauth_client

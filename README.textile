@@ -4,15 +4,15 @@ p. Facebook Open Graph API Gem.
 
 h2. Installation
 
-bq.. gem install fbgraph
+notextile. <code> gem install fbgraph</code>
 
 p. Be sure to require it
 
-bq.. require "fbgraph"
+notextile. <code>require "fbgraph"</code>
 
-p. or add this line into Gemfile for Rails 3.
+p. or add this line into Gemfile for Rails 3
 
-bq.. gem "fbgraph"
+notextile. <code>gem "fbgraph"</code>
 
 
 h2. Example Apps
@@ -33,10 +33,12 @@ h3. Picture
 
 h3. Paging
 
-h3 RealTime Updates
-h4 TODO
+h3. RealTime Updates
 
-h3 Analytics
-h4 TODO
+h4. TODO
 
-h3 Advanced
+h3. Analytics
+
+h4. TODO
+
+h3. Advanced
