@@ -78,7 +78,8 @@ p. Also you can get results of more than 1 objects
 
 Example:
 
-notextile. <code> client.selection.page.info!</code>
+notextile. <code> client.selection.user([id1,id2,id3]).info!</code>
+
 
 h4. client.selection.info!
 
@@ -114,7 +115,7 @@ h3. Picture
 
 h4. client.selection.picture
 
-p. return the object picture url 
+p. return the url of the object picture
 
 notextile. <code> client.selection.me.picture </code>
 
@@ -157,14 +158,49 @@ p.  Get the search results by type
 
 notextile. <code> results = client.search.query('facebook').on('home').info! </code>
 
-
 h3. RealTime Updates
 
-h4. not documented yet
+h4. client.realtime.user
+h4. client.realtime.permissions
+h4. client.realtime.errors
+
+p. Set the object to be subscribed, modified or unsubscribed
+
+h4. client.realtime.fields('email,picture')
+
+p. Set the objects fields 
+
+
+h4. client.realtime.callback_url(url)
+
+p. Set the callback url
+
+
+h4. client.realtime.verify_token(token)
+
+p. Set the verify token (optional)
+
+h4. client.realtime.subscribe!
+
+p. Send the request for add/modify a subscription for realtime Updates.
+
+
+Examples:
+
+notextile. <code> results = client.realtime.user.fields('email,picture').callback_url(url).verify_token('token').subscribe! </code>
+
+notextile. <code> results = client.realtime.permissions.fields('read_stream').callback_url(url).subscribe! </code>
+
+If you want delete a subscirpition, you can use the delete! method.
+
+Examples:
+
+notextile. <code> results = client.realtime.user.delete!</code>
+
 
 h3. Analytics
 
-h4. not documented yet
+h4. TODO
 
 h3. Advanced
 
