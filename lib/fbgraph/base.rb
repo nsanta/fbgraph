@@ -38,10 +38,10 @@ module FBGraph
 
     def info!(parsed = true)
       if @objects.is_a? Array
-        @params.merge!({:ids => ids.join(',')})
-        uri = "/"
+        @params.merge!({:ids => @objects.join(',')})
+        uri = build_open_graph_path(nil,nil, @params)
       elsif @objects.is_a? String
-        uri = build_open_graph_path(@objects , @connection_type)
+        uri = build_open_graph_path(@objects , @connection_type, @params)
       end
       puts "FBGRAPH [GET]: #{uri}"
       result = @client.consumer.get(uri)

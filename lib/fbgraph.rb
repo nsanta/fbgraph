@@ -1,5 +1,5 @@
 require 'oauth2'
-
+require 'json'
 
 require 'fbgraph/client'
 require 'fbgraph/base'

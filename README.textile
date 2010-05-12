@@ -161,7 +161,9 @@ notextile. <code> results = client.search.query('facebook').on('home').info! </c
 h3. RealTime Updates
 
 h4. client.realtime.user
+
 h4. client.realtime.permissions
+
 h4. client.realtime.errors
 
 p. Set the object to be subscribed, modified or unsubscribed
