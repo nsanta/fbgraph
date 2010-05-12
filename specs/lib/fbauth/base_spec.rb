@@ -97,11 +97,34 @@ describe FBGraph do
       end
 
       describe 'publish!' do
-        
+        describe 'when is passed params before invocation' do
+          it 'should request with the path "/123" and params {:extra => "extra" }' do
+            uri = "/123"
+            @base.find('123')
+            @base.params = {:extra => "extra" }
+            @client.consumer.stub!(:post).with(uri , @base.params).and_return('')
+            @base.publish!({}, false)
+        end
+        end
+        describe 'when is passed params on invocation' do
+          it 'should request with the path "/123" and params {:extra => "extra" }' do
+            uri = "/123"
+            @base.find('123')
+            ps = {:extra => "extra" }
+            @client.consumer.stub!(:post).with(uri , ps).and_return('')
+            @base.publish!(ps , false)
+          end
+        end
       end
 
       describe 'delete!' do
-        
+        it 'should request with the path "/123" and params {:extra => "extra" }' do
+          uri = "/123"
+          @base.find('123')
+          @base.params = {:extra => "extra" }
+          @client.consumer.stub!(:delete).with(uri , @base.params).and_return('')
+          @base.delete!(false)
+        end
       end
       
     end
