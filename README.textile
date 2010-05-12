@@ -5,11 +5,11 @@ p. Facebook Open Graph API Gem.
 
 h2. Resources
 
-* "View RDoc on RDoc.info":rdoc.info/projects/nsanta/fbgraph
+* "View RDoc on RDoc.info":http://rdoc.info/projects/nsanta/fbgraph
 
-* "View Source on GitHub":github.com/nsanta/fbgraph
+* "View Source on GitHub":http://github.com/nsanta/fbgraph
 
-* "Report Issues on GitHub":github.com/nsanta/fbgraph/issues
+* "Report Issues on GitHub":http://github.com/nsanta/fbgraph/issues
 
 
 h2. Installation
