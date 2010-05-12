@@ -2,6 +2,16 @@ h2. FBGRaph
 
 p. Facebook Open Graph API Gem.
 
+
+h2. Resources
+
+* View RDoc on RDoc.info (rdoc.info/projects/nsanta/fbgraph)
+
+* View Source on GitHub (github.com/nsanta/fbgraph)
+
+* Report Issues on GitHub (github.com/nsanta/fbgraph/issues)
+
+
 h2. Installation
 
 notextile. <code> gem install fbgraph</code>
