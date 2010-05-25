@@ -1,0 +1,14 @@
+*.log
+.DS_Store
+doc
+tmp
+pkg
+*.gem
+*.pid
+coverage
+coverage.data
+build/*
+*.pbxuser
+*.mode1v3
+.svn
+profile

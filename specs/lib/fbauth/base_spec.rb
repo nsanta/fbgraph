@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__),"../../../lib/fbgraph")
+require 'specs/spec_helper'
 
 describe FBGraph do
   describe FBGraph::Authorization do
@@ -59,7 +59,7 @@ describe FBGraph do
       describe 'info!' do
         describe 'when object is an array' do
           it 'should request with the path "/?ids=1,2,3"' do
-            uri = "/?ids?=1,2,3"
+            uri = "/?ids=1,2,3"
             @base.find([1,2,3])
             @client.consumer.stub!(:get).with(uri).and_return('')
             @base.info!(false)

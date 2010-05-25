@@ -8,5 +8,10 @@ Echoe.new('fbgraph', '0.0.5') do |p|
   p.author         = "Nicolas Santa"
   p.email          = "nicolas55ar@gmail.com"
   p.ignore_pattern = ["tmp/*", "script/*"]
-  p.development_dependencies = ['oauth2' , 'json']
+  # p.development_dependencies = ['oauth2' , 'json']
+  p.runtime_dependencies = ['oauth2' , 'json', 'hashie']
+end
+
+Spec::Rake::SpecTask.new(:rspec) do |t|
+  t.spec_files = FileList[File.join(File.dirname(__FILE__), 'specs', '**', '*_spec.rb')]
 end

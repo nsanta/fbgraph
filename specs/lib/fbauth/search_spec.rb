@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__),"../../../lib/fbgraph")
+require 'specs/spec_helper'
 
 describe FBGraph do
   describe FBGraph::Search do

@@ -45,7 +45,7 @@ module FBGraph
       end
       puts "FBGRAPH [GET]: #{uri}"
       result = @client.consumer.get(uri)
-      return parsed  ? JSON.parse(result) : result
+      return parse_json(result, parsed)
     end
   
   
@@ -54,14 +54,14 @@ module FBGraph
       uri = build_open_graph_path(@objects , @connection_type)
       puts "FBGRAPH [POST]: #{uri}"
       result = @client.consumer.post(uri ,  @params)
-      return parsed  ? JSON.parse(result) : result
+      return parse_json(result, parsed)
     end
   
     def delete!(parsed = true)
       uri = build_open_graph_path(@objects , nil)
       puts "FBGRAPH [DELETE]: #{uri}"
       result = @client.consumer.delete(uri ,  @params)
-      return parsed  ? JSON.parse(result) : result
+      return parse_json(result, parsed)
     end
 
     %w(limit offset until since).each do |paging|
@@ -74,6 +74,10 @@ module FBGraph
 
     
     private
+    
+    def parse_json(result, parsed)
+      return parsed  ? Hashie::Mash.new(JSON.parse(result)) : result
+    end
     
     def build_open_graph_path(objects,connection_type = nil , params = {})
       request = "/" + [objects , connection_type].compact.join('/')

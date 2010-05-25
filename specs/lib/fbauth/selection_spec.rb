@@ -1,7 +1,7 @@
-require File.join(File.dirname(__FILE__),"../../../lib/fbgraph")
+require 'specs/spec_helper'
 
 describe FBGraph do
-  describe FBGraph::RealTime do
+  describe FBGraph::Realtime do
 
     before :each do
       @client_id = 'client_id'
