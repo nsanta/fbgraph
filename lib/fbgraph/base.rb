@@ -68,6 +68,7 @@ module FBGraph
       class_eval <<-PAGING
         def #{paging}(value)
           @params[:#{paging}] = value
+          self
         end
         PAGING
     end

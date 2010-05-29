@@ -5,7 +5,7 @@ module FBGraph
    
     CONNECTION_TYPES = %w(home photos comments feed	noreply	
                           maybe invited attending declined picture 
-                          members picture tagged links groups albums	
+                          members tagged links groups albums	
                           statuses	videos notes posts events friends	
                           activities interests music books movies television	
                           likes inbox outbox updates).freeze
@@ -39,7 +39,9 @@ module FBGraph
     end   
 
     def picture
-      @client.facebook_uri + build_open_graph_path(@objects , 'picture')
+      uri = @client.facebook_uri + build_open_graph_path(@objects , 'picture')
+      return uri unless @client.consumer
+      uri + '?access_token=' + @client.consumer.token
     end
 
   end

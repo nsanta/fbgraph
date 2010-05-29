@@ -1,4 +1,4 @@
-require 'specs/spec_helper'
+require File.expand_path('../../../spec_helper', __FILE__)
 
 describe FBGraph do
   describe FBGraph::Authorization do
