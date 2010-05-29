@@ -222,3 +222,12 @@ h4. not documented yet
 h2. Contributions
 
 p. Just do a pull request with the repo in sync.
+
+
+h2. Contributors
+
+"Victor Costan":http://github.com/costan
+
+"Mark Bates":http://github.com/markbates
+
+
