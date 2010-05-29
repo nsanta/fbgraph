@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__),"../../../lib/fbgraph")
+require File.expand_path('../../../spec_helper', __FILE__)
 
 describe FBGraph do
   describe FBGraph::Client do
