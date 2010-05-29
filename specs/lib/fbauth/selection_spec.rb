@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__),"../../../lib/fbgraph")
 
 describe FBGraph do
-  describe FBGraph::RealTime do
+  describe FBGraph::Selection do
 
     before :each do
       @client_id = 'client_id'
