@@ -75,6 +75,13 @@ describe FBGraph do
             @base.info!(false)
           end
           
+          it "should parse the result by default" do
+            uri = "/123"
+            @base.find('123')
+            @client.consumer.stub!(:get).with(uri).and_return('{"me": [1, 2]}')
+            @base.info!.me.should == [1, 2]
+          end
+          
           describe 'when a connection is passed' do
             it 'should request with the path "/123/home"' do
               uri = "/123/home"
