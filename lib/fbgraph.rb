@@ -1,6 +1,6 @@
 require 'oauth2'
 require 'json'
-
+require 'hashie'
 
 
 require 'fbgraph/client'

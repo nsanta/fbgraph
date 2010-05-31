@@ -1,5 +1,3 @@
-require 'hashie'
-
 module FBGraph
   
   class Base
