@@ -40,6 +40,25 @@ describe FBGraph do
           @client.consumer.should == @consumer
         end
       end
+      
+      describe "upgrade_session_keys" do
+        before :each do
+          @client.stub!(:oauth_client)
+          options = {:client_id => @client_id, :client_secret => @secret_id, :type => 'client_cred', :sessions => '123,456'}
+          json = '[{"access_token": "999999-10000"}, null]'
+          @client.oauth_client.stub!(:request).with(:get, '/oauth/exchange_sessions', options).and_return(json)
+
+          @tokens = @authorization.upgrade_session_keys(123, 456)
+        end
+        
+        it 'should return the access_token' do
+          @tokens.first.should == "999999-10000"
+        end
+        
+        it 'should handle nil values' do
+          @tokens.last.should == nil
+        end
+      end
     end
     
   end
