@@ -16,6 +16,11 @@ module FBGraph
       @client.access_token = @client.consumer.token
     end
 
+    def upgrade_session!(key)
+      token = upgrade_session_keys(key).first
+      @client.access_token = token
+    end
+
     def upgrade_session_keys(*keys)
       tokens = @client.oauth_client.request(:get, '/oauth/exchange_sessions', {
         :client_id     => @client.client_id,
