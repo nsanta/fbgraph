@@ -94,7 +94,7 @@ module FBGraph
     end
     
     def multipart?
-      %w(photos).include?(@connection_type) || %w(photo).include?(@objects)
+      %w(photos).include?(@connection_type) || %w(photo post).include?(@objects)
     end
 
   end  
