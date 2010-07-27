@@ -22,7 +22,7 @@ module FBGraph
       return self
     end
     
-    def params= (ps)
+    def params=(ps)
       @params = ps
       return self
     end  
@@ -31,7 +31,7 @@ module FBGraph
       @params
     end
     
-    def param (pm)
+    def param(pm)
       @params.merge!(pm)
       return self
     end  
@@ -53,7 +53,7 @@ module FBGraph
       @params.merge!(data)
       uri = build_open_graph_path(@objects , @connection_type)
       puts "FBGRAPH [POST]: #{uri}"
-      result = @client.consumer.post(uri ,  @params)
+      result = @client.consumer.post(uri ,  @params , multipart_header)
       return parse_json(result, parsed)
     end
   
@@ -84,6 +84,17 @@ module FBGraph
       request = "/" + [objects , connection_type].compact.join('/')
       request += "?"+params.to_a.map{|p| p.join('=')}.join('&') unless params.empty?
       request
+    end
+
+    def multipart_header
+      if multipart?
+        header = {"Content-Disposition" => "form-data", "name" => "control-name"}
+      end  
+      header || {}
+    end
+    
+    def multipart?
+      %w(photos).include?(@connection_type) || %w(photo).include?(@objects)
     end
 
   end  
