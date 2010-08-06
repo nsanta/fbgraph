@@ -1,0 +1,3 @@
+module FacebookGraphHelper
+  #stub
+end
