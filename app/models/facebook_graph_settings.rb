@@ -1,5 +1,5 @@
 class FacebookGraphSettings < Settingslogic
-    source "#{Rails.root}/config/fbgraph_settings.yml"
+    source "#{Rails.root}/config/settings/fbgraph_settings.yml"
     namespace Rails.env
 end
 

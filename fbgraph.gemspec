@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nicolas Santa"]
-  s.date = %q{2010-08-06}
+  s.date = %q{2010-08-10}
   s.description = %q{A Gem for Facebook Open Graph API}
   s.email = %q{nicolas55ar@gmail.com}
-  s.extra_rdoc_files = ["README", "README.textile", "TODO.list", "lib/fbgraph.rb", "lib/fbgraph/authorization.rb", "lib/fbgraph/base.rb", "lib/fbgraph/client.rb", "lib/fbgraph/engine.rb", "lib/fbgraph/railties/tasks.rake", "lib/fbgraph/realtime.rb", "lib/fbgraph/search.rb", "lib/fbgraph/selection.rb"]
-  s.files = ["Manifest", "README", "README.textile", "Rakefile", "TODO.list", "app/controllers/facebook_graph_controller.rb", "app/helpers/facebook_graph_helper.rb", "app/models/facebook_settings.rb", "fbgraph.gemspec", "lib/fbgraph.rb", "lib/fbgraph/authorization.rb", "lib/fbgraph/base.rb", "lib/fbgraph/client.rb", "lib/fbgraph/engine.rb", "lib/fbgraph/railties/tasks.rake", "lib/fbgraph/realtime.rb", "lib/fbgraph/search.rb", "lib/fbgraph/selection.rb", "specs/lib/fbauth/authorization_spec.rb", "specs/lib/fbauth/base_spec.rb", "specs/lib/fbauth/client_spec.rb", "specs/lib/fbauth/realtime_spec.rb", "specs/lib/fbauth/search_spec.rb", "specs/lib/fbauth/selection_spec.rb", "specs/spec_helper.rb"]
+  s.extra_rdoc_files = ["README", "README.textile", "TODO.list", "lib/fbgraph.rb", "lib/fbgraph/authorization.rb", "lib/fbgraph/base.rb", "lib/fbgraph/client.rb", "lib/fbgraph/engine.rb", "lib/fbgraph/railties/tasks.rake", "lib/fbgraph/realtime.rb", "lib/fbgraph/search.rb", "lib/fbgraph/selection.rb", "lib/generators/fbgraph/USAGE", "lib/generators/fbgraph/fbgraph_generator.rb"]
+  s.files = ["Manifest", "README", "README.textile", "Rakefile", "TODO.list", "app/controllers/facebook_graph_controller.rb", "app/helpers/facebook_graph_helper.rb", "app/models/facebook_graph_settings.rb", "lib/fbgraph.rb", "lib/fbgraph/authorization.rb", "lib/fbgraph/base.rb", "lib/fbgraph/client.rb", "lib/fbgraph/engine.rb", "lib/fbgraph/railties/tasks.rake", "lib/fbgraph/realtime.rb", "lib/fbgraph/search.rb", "lib/fbgraph/selection.rb", "lib/generators/fbgraph/USAGE", "lib/generators/fbgraph/fbgraph_generator.rb", "specs/lib/fbauth/authorization_spec.rb", "specs/lib/fbauth/base_spec.rb", "specs/lib/fbauth/client_spec.rb", "specs/lib/fbauth/realtime_spec.rb", "specs/lib/fbauth/search_spec.rb", "specs/lib/fbauth/selection_spec.rb", "specs/spec_helper.rb", "fbgraph.gemspec"]
   s.homepage = %q{http://github.com/nsanta/fbgraph}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Fbgraph", "--main", "README"]
   s.require_paths = ["lib"]
