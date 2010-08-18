@@ -3,11 +3,16 @@ README
 README.textile
 Rakefile
 TODO.list
+app/controllers/facebook_graph_controller.rb
+app/helpers/facebook_graph_helper.rb
+app/models/facebook_graph_settings.rb
 fbgraph.gemspec
 lib/fbgraph.rb
 lib/fbgraph/authorization.rb
 lib/fbgraph/base.rb
 lib/fbgraph/client.rb
+lib/fbgraph/engine.rb
+lib/fbgraph/railties/tasks.rake
 lib/fbgraph/realtime.rb
 lib/fbgraph/search.rb
 lib/fbgraph/selection.rb

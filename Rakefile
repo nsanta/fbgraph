@@ -7,9 +7,9 @@ Echoe.new('fbgraph', '0.0.9') do |p|
   p.url            = "http://github.com/nsanta/fbgraph"
   p.author         = "Nicolas Santa"
   p.email          = "nicolas55ar@gmail.com"
-  p.ignore_pattern = ["tmp/*", "script/*"]
+  p.ignore_pattern = ["tmp/*", "script/*", "specs/rails_root/**/**"]
   # p.development_dependencies = ['oauth2' , 'json']
-  p.runtime_dependencies = ['oauth2' , 'json', 'hashie']
+  p.runtime_dependencies = ['oauth2' , 'json', 'hashie','settingslogic']
 end
 
 Spec::Rake::SpecTask.new(:rspec) do |t|
