@@ -1,7 +1,7 @@
 module FBGraph
   class Selection < Base
     
-    OBJECTS = %w(user album event group link note page photo post status video).freeze
+    OBJECTS = %w(user album event group link note page photo post status video comment).freeze
    
     CONNECTION_TYPES = %w(home photos comments feed	noreply	
                           maybe invited attending declined picture 
