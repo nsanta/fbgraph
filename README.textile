@@ -1,4 +1,4 @@
-h2. FBGRaph (0.0.8)
+h2. FBGRaph (0.1.1)
 
 p. Facebook Open Graph API Gem.
 
