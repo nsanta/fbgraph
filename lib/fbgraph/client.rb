@@ -1,16 +1,15 @@
 module FBGraph
   
   class Client
-      attr_accessor :client_id , :secret_id , :facebook_uri , :access_token , :consumer 
+      attr_accessor :client_id , :secret_id , :facebook_uri , :access_token , :consumer , :auth
       
     
       def initialize(options)
-        self.client_id , self.secret_id = options[:client_id] , options[:secret_id]
+        @client_id , @secret_id = options[:client_id] , options[:secret_id]
         @facebook_uri = 'https://graph.facebook.com'
-        if self.access_token = options[:token]
-          self.consumer = RestClient::Resource.new(@facebook_uri)
-          self.auth = OAuth2::AccessToken.new(oauth_client , self.access_token)
-        end
+        @access_token = options[:token]
+        @consumer = RestClient::Resource.new(@facebook_uri)
+        @auth = OAuth2::AccessToken.new(oauth_client , @access_token)
         return true
       end
   

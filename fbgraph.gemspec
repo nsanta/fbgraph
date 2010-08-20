@@ -28,12 +28,14 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<oauth2>, [">= 0"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
       s.add_runtime_dependency(%q<hashie>, [">= 0"])
+      s.add_runtime_dependency(%q<rest-client>, [">= 0"])
       s.add_development_dependency(%q<echoe>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
     else
       s.add_dependency(%q<oauth2>, [">= 0"])
       s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<hashie>, [">= 0"])
+      s.add_dependency(%q<rest-client>, [">= 0"])
       s.add_dependency(%q<echoe>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
     end
@@ -41,6 +43,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<oauth2>, [">= 0"])
     s.add_dependency(%q<json>, [">= 0"])
     s.add_dependency(%q<hashie>, [">= 0"])
+    s.add_dependency(%q<rest-client>, [">= 0"])
     s.add_dependency(%q<echoe>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
   end

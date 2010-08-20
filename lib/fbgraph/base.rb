@@ -2,7 +2,7 @@ module FBGraph
   
   class Base
     
-    attr_reader :objects , :connection_type 
+    attr_reader :objects , :connection_type , :logger
     
     def initialize(client)
       @client = client
@@ -39,28 +39,29 @@ module FBGraph
     def info!(parsed = true)
       if @objects.is_a? Array
         @params.merge!({:ids => @objects.join(',')})
-        uri = build_open_graph_path(nil,nil, @params)
+        path = build_open_graph_path(nil,nil, @params)
       elsif @objects.is_a? String
-        uri = build_open_graph_path(@objects , @connection_type, @params)
+        path = build_open_graph_path(@objects , @connection_type, @params)
       end
-      puts "FBGRAPH [GET]: #{uri}"
-      result = @client.consumer[uri].get
+      puts "FBGRAPH [GET]: #{path}"
+      puts "ACCESS TOKEN: #{@client.access_token}"
+      result = @client.consumer[path].get
       return parse_json(result, parsed)
     end
   
   
     def publish!(data = {},parsed = true)
       @params.merge!(data)
-      uri = build_open_graph_path(@objects , @connection_type)
-      puts "FBGRAPH [POST]: #{uri}"
-      result = @client.consumer[uri].post(@params)
+      path = build_open_graph_path(@objects , @connection_type)
+      puts "FBGRAPH [POST]: #{path}"
+      result = @client.consumer[path].post(@params)
       return parse_json(result, parsed)
     end
   
     def delete!(parsed = true)
-      uri = build_open_graph_path(@objects , nil)
-      puts "FBGRAPH [DELETE]: #{uri}"
-      result = @client.consumer[uri].post(@params.merge(:method => :delete))
+      path = build_open_graph_path(@objects , nil)
+      puts "FBGRAPH [DELETE]: #{path}"
+      result = @client.consumer[path].post(@params.merge(:method => :delete))
       return parse_json(result, parsed)
     end
 
@@ -80,11 +81,13 @@ module FBGraph
       return parsed  ? Hashie::Mash.new(JSON.parse(result.body)) : result.body
     end
     
+    
+    
     def build_open_graph_path(objects,connection_type = nil , params = {})
-      params.merge(:access_token => @client.access_token)
-      request = "/" + [objects , connection_type].compact.join('/')
+      params.merge!(:access_token => @client.access_token)
+      request = [objects , connection_type].compact.join('/')
       request += "?"+params.to_a.map{|p| p.join('=')}.join('&') unless params.empty?
-      request
+      URI.encode(request)
     end
 
   end  

@@ -12,7 +12,8 @@ module FBGraph
     
 
     def process_callback(code, options = {})
-      @client.access_token = @client.consumer.token
+      @client.auth = @client.oauth_client.web_server.get_access_token(code, options)
+      @client.access_token = @client.auth.token
     end
 
   end  
