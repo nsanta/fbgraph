@@ -1,14 +1,14 @@
 module FBGraph
   class Selection < Base
     
-    OBJECTS = %w(user album event group link note page photo post status video comment).freeze
+    OBJECTS = %w(user album event group link note page photo post status video comment checkin).freeze
    
     CONNECTION_TYPES = %w(home photos comments feed	noreply	
                           maybe invited attending declined picture 
                           members tagged links groups albums	
                           statuses	videos notes posts events friends	
                           activities interests music books movies television	
-                          likes inbox outbox updates accounts).freeze
+                          likes inbox outbox updates accounts chekins).freeze
    
     OBJECTS.each do |object|
       class_eval  <<-METHOD
