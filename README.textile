@@ -230,4 +230,5 @@ h2. Contributors
 
 "Mark Bates":http://github.com/markbates
 
+"Florent Guilleux":http://github.com/Florent2
 
