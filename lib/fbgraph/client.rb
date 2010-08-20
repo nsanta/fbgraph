@@ -8,7 +8,8 @@ module FBGraph
         self.client_id , self.secret_id = options[:client_id] , options[:secret_id]
         @facebook_uri = 'https://graph.facebook.com'
         if self.access_token = options[:token]
-          self.consumer = OAuth2::AccessToken.new(oauth_client , self.access_token)
+          self.consumer = RestClient::Resource.new(@facebook_uri)
+          self.auth = OAuth2::AccessToken.new(oauth_client , self.access_token)
         end
         return true
       end

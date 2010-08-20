@@ -9,7 +9,7 @@ Echoe.new('fbgraph', '0.1.1') do |p|
   p.email          = "nicolas55ar@gmail.com"
   p.ignore_pattern = ["tmp/*", "script/*"]
   p.development_dependencies = ['echoe', 'rspec']
-  p.runtime_dependencies = ['oauth2' , 'json', 'hashie']
+  p.runtime_dependencies = ['oauth2' , 'json', 'hashie' , 'rest-client']
 end
 
 Spec::Rake::SpecTask.new(:rspec) do |t|

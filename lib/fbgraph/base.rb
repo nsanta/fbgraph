@@ -44,7 +44,7 @@ module FBGraph
         uri = build_open_graph_path(@objects , @connection_type, @params)
       end
       puts "FBGRAPH [GET]: #{uri}"
-      result = @client.consumer.get(uri)
+      result = @client.consumer[uri].get
       return parse_json(result, parsed)
     end
   
@@ -53,14 +53,14 @@ module FBGraph
       @params.merge!(data)
       uri = build_open_graph_path(@objects , @connection_type)
       puts "FBGRAPH [POST]: #{uri}"
-      result = @client.consumer.post(uri ,  @params , multipart_header)
+      result = @client.consumer[uri].post(@params)
       return parse_json(result, parsed)
     end
   
     def delete!(parsed = true)
       uri = build_open_graph_path(@objects , nil)
       puts "FBGRAPH [DELETE]: #{uri}"
-      result = @client.consumer.delete(uri ,  @params)
+      result = @client.consumer[uri].post(@params.merge(:method => :delete))
       return parse_json(result, parsed)
     end
 
@@ -77,24 +77,14 @@ module FBGraph
     private
     
     def parse_json(result, parsed)
-      return parsed  ? Hashie::Mash.new(JSON.parse(result)) : result
+      return parsed  ? Hashie::Mash.new(JSON.parse(result.body)) : result.body
     end
     
     def build_open_graph_path(objects,connection_type = nil , params = {})
+      params.merge(:access_token => @client.access_token)
       request = "/" + [objects , connection_type].compact.join('/')
       request += "?"+params.to_a.map{|p| p.join('=')}.join('&') unless params.empty?
       request
-    end
-
-    def multipart_header
-      if multipart?
-        header = {"Content-Disposition" => "form-data", "name" => "control-name"}
-      end  
-      header || {}
-    end
-    
-    def multipart?
-      %w(photos).include?(@connection_type) || %w(photo post).include?(@objects)
     end
 
   end  
