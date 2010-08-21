@@ -4,7 +4,7 @@ module FBGraph
       attr_accessor :client_id , :secret_id , :facebook_uri , :access_token , :consumer 
       
     
-      def initialize(options)
+      def initialize(options = {})
         self.client_id, self.secret_id = options[:client_id] || FBGraph.config[:client_id], options[:secret_id] || FBGraph.config[:secret_id]
         @facebook_uri = 'https://graph.facebook.com'
         if self.access_token = options[:token]
