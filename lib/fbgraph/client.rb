@@ -5,7 +5,7 @@ module FBGraph
       
     
       def initialize(options)
-        self.client_id , self.secret_id = options[:client_id] , options[:secret_id]
+        self.client_id, self.secret_id = options[:client_id] || FBGraph.config[:client_id], options[:secret_id] || FBGraph.config[:secret_id]
         @facebook_uri = 'https://graph.facebook.com'
         if self.access_token = options[:token]
           self.consumer = OAuth2::AccessToken.new(oauth_client , self.access_token)
