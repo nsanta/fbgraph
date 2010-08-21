@@ -29,4 +29,4 @@ require 'fbgraph/authorization'
 require 'fbgraph/selection'
 require 'fbgraph/search'
 require 'fbgraph/realtime'
-
+require 'base64/base64'
