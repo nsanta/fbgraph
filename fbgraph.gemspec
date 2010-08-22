@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{fbgraph}
-  s.version = "0.1.0.4"
+  s.version = "0.1.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nicolas Santa"]
