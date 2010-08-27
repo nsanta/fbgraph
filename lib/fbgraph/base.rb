@@ -3,6 +3,7 @@ module FBGraph
   class Base
     
     attr_reader :objects , :connection_type , :logger
+
     
     def initialize(client)
       @client = client

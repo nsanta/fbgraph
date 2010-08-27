@@ -41,7 +41,7 @@ module FBGraph
     def picture
       uri = @client.facebook_uri + build_open_graph_path(@objects , 'picture')
       return uri unless @client.consumer
-      uri + '?access_token=' + @client.consumer.token
+      uri + '?access_token=' + @client.access_token
     end
 
   end

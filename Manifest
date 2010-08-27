@@ -6,6 +6,7 @@ TODO.list
 lib/fbgraph.rb
 lib/fbgraph/authorization.rb
 lib/fbgraph/base.rb
+lib/fbgraph/canvas.rb
 lib/fbgraph/client.rb
 lib/fbgraph/realtime.rb
 lib/fbgraph/search.rb
