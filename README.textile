@@ -53,6 +53,10 @@ notextile. <code>client.selection.user('id').videos.offset(10).info</code>
 
 notextile. <code>client.search.query('q').on('users').limit(20).info</code>
 
+h3. Rails config file
+
+h2. TODO
+
 h3. Authorization
 
 h4. client.authorization.authorize_url
@@ -66,6 +70,15 @@ h4. client.authorization.process_callback
 p. process the callback and returns the access token
 
 notextile. <code> access_token = client.authorization.process_callback(params[:code], :redirect_uri => callback_url)</code>
+
+h3. Exchange Sessions
+
+h2. TODO
+
+h3. Canvas
+
+
+h2. TODO
 
 
 h3. Selection
