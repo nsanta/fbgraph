@@ -3,7 +3,7 @@ module Fbgraph
   class Canvas
     
     class << self
-      def parse_signed_request(request)
+      def parse_signed_request(secret_id,request)
         encoded_sig, payload = request.split('.', 2)
         sig = ""
         urldecode64(encoded_sig).each_byte { |b|
@@ -13,7 +13,7 @@ module Fbgraph
           if data['algorithm'].to_s.upcase != 'HMAC-SHA256'
           raise "Bad signature algorithm: %s" % data['algorithm']
         end
-        expected_sig = OpenSSL::HMAC.hexdigest('sha256', self.secret_id, payload)
+        expected_sig = OpenSSL::HMAC.hexdigest('sha256', secret_id, payload)
         if expected_sig != sig
           raise "Bad signature"
         end
