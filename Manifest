@@ -3,6 +3,7 @@ README
 README.textile
 Rakefile
 TODO.list
+fbgraph.gemspec
 lib/fbgraph.rb
 lib/fbgraph/authorization.rb
 lib/fbgraph/base.rb
