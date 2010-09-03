@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('fbgraph', '0.1.4') do |p|
+Echoe.new('fbgraph', '0.1.4.9') do |p|
   p.description    = "A Gem for Facebook Open Graph API"
   p.url            = "http://github.com/nsanta/fbgraph"
   p.author         = "Nicolas Santa"
