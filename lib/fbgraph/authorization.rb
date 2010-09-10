@@ -33,22 +33,5 @@ module FBGraph
       JSON.parse(tokens).map { |hash| hash['access_token'] if hash}
     end
 
-    def upgrade_session(key)
-      token = upgrade_session_keys(key).first
-      @client.access_token = token['access_token']
-      token
-    end
-
-
-    def exchange_sessions(*keys)
-      tokens = @client.oauth_client.request(:get, '/oauth/exchange_sessions', {
-        :client_id     => @client.client_id,
-        :client_secret => @client.secret_id,
-        :type          => 'client_cred',
-        :sessions      => keys.flatten.join(',')
-      })
-      JSON.parse(tokens)
-    end
-
   end  
 end

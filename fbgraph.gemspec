@@ -6,7 +6,6 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nicolas Santa"]
-  s.cert_chain = ["/home/nicolas/certs/gem-public_cert.pem"]
   s.date = %q{2010-09-03}
   s.description = %q{A Gem for Facebook Open Graph API}
   s.email = %q{nicolas55ar@gmail.com}
