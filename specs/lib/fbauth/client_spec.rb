@@ -37,7 +37,7 @@ describe FBGraph do
           @client.access_token.should == @token
         end
         it 'should set the consumer client' do
-          @client.consumer.class.should == OAuth2::AccessToken
+          @client.consumer.class.should == RestClient::Resource
         end
       end
     end

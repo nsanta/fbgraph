@@ -40,8 +40,9 @@ module FBGraph
 
     def picture
       uri = [@client.facebook_uri , build_open_graph_path(@objects , 'picture')].join('/')
-      return uri unless @client.consumer
+      return uri if @client.access_token.nil?
       uri + '?access_token=' + @client.access_token
+
     end
 
   end

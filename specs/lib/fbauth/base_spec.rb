@@ -9,7 +9,8 @@ describe FBGraph do
       @client = FBGraph::Client.new(:client_id => @client_id,
                                     :secret_id => @secret_id,
                                     :token => 'token')
-      @base = FBGraph::Base.new(@client)                              
+      @base = FBGraph::Base.new(@client)
+      
     end
 
     describe 'initialization' do
@@ -59,9 +60,9 @@ describe FBGraph do
       describe 'info!' do
         describe 'when object is an array' do
           it 'should request with the path "/?ids=1,2,3"' do
-            uri = "/?ids=1,2,3"
+            uri = "?access_token=token&ids=1,2,3"
             @base.find([1,2,3])
-            @client.consumer.stub!(:get).with(uri).and_return('')
+            expect_consumer(uri)
             @base.info!(false)
           end
         end
@@ -69,34 +70,34 @@ describe FBGraph do
         describe 'when object is a string' do
 
           it 'should request with the path "/123"' do
-            uri = "/123"
-            @base.find('123')
-            @client.consumer.stub!(:get).with(uri).and_return('')
+            uri = "123?access_token=token"
+            @base.find('123')            
+            expect_consumer(uri)                        
             @base.info!(false)
           end
           
           it "should parse the result by default" do
-            uri = "/123"
+            uri = "123?access_token=token"
             @base.find('123')
-            @client.consumer.stub!(:get).with(uri).and_return('{"me": [1, 2]}')
+            expect_consumer(uri, '{"me": [1, 2]}')
             @base.info!.me.should == [1, 2]
           end
           
           describe 'when a connection is passed' do
             it 'should request with the path "/123/home"' do
-              uri = "/123/home"
+              uri = "123/home?access_token=token"
               @base.find('123').connection('home')
-              @client.consumer.stub!(:get).with(uri).and_return('')
+              expect_consumer(uri)
               @base.info!(false)
             end
           end
 
           describe 'when params are passed' do
             it 'should request with the path "/123?fields=name,picture"' do
-              uri = "/123?fields=name,picture"
+              uri = "123?fields=name,picture&access_token=token"
               @base.find('123')
               @base.params = {:fields => "name,picture"}
-              @client.consumer.stub!(:get).with(uri).and_return('')
+              expect_consumer(uri)
               @base.info!(false)
             end
           end
@@ -106,30 +107,31 @@ describe FBGraph do
       describe 'publish!' do
         describe 'when is passed params before invocation' do
           it 'should request with the path "/123" and params {:extra => "extra" }' do
-            uri = "/123"
+            uri = "123"
             @base.find('123')
             @base.params = {:extra => "extra" }
-            @client.consumer.stub!(:post).with(uri , @base.params).and_return('')
+            #@client.consumer.stub!(:post).with(uri , @base.params).and_return('')
+            expect_consumer_post(uri, {:extra => "extra", :access_token => 'token'})
             @base.publish!({}, false)
         end
         end
         describe 'when is passed params on invocation' do
           it 'should request with the path "/123" and params {:extra => "extra" }' do
-            uri = "/123"
+            uri = "123"
             @base.find('123')
-            ps = {:extra => "extra" }
-            @client.consumer.stub!(:post).with(uri , ps).and_return('')
-            @base.publish!(ps , false)
+            ps = {:extra => "extra"}
+            expect_consumer_post(uri, {:extra => "extra", :access_token => 'token'})
+            @base.publish!(ps, false)
           end
         end
       end
 
       describe 'delete!' do
         it 'should request with the path "/123" and params {:extra => "extra" }' do
-          uri = "/123"
+          uri = "123"
           @base.find('123')
           @base.params = {:extra => "extra" }
-          @client.consumer.stub!(:delete).with(uri , @base.params).and_return('')
+          expect_consumer_post(uri, {:method => :delete, :extra => "extra", :access_token => 'token'})
           @base.delete!(false)
         end
       end

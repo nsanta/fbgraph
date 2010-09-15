@@ -37,7 +37,7 @@ describe FBGraph do
           @token.should == @consumer.token
         end
         it 'should set the consumer' do
-          @client.consumer.should == @consumer
+          @client.auth.should == @consumer
         end
       end
     end
