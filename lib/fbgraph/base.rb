@@ -38,9 +38,10 @@ module FBGraph
     end  
 
     def info!(parsed = true)
+      @params.merge!(:access_token => @client.access_token) unless @client.access_token.nil?
       if @objects.is_a? Array
         @params.merge!({:ids => @objects.join(',')})
-        path = build_open_graph_path(nil,nil, @params)
+        path = build_open_graph_path(nil,nil, params)
       elsif @objects.is_a? String
         path = build_open_graph_path(@objects , @connection_type, @params)
       end
@@ -53,16 +54,21 @@ module FBGraph
   
     def publish!(data = {},parsed = true)
       @params.merge!(data)
+      params = @params.merge(:access_token => @client.access_token) if (@client.access_token)      
       path = build_open_graph_path(@objects , @connection_type)
       puts "FBGRAPH [POST]: #{path}"
-      result = @client.consumer[path].post(@params)
+      puts "PARAMS: #{params.to_a.map{|p| p.join('=')}.join('&')}"
+      result = @client.consumer[path].post(params)
       return parse_json(result, parsed)
     end
   
     def delete!(parsed = true)
       path = build_open_graph_path(@objects , nil)
+      params = @params.merge(:access_token => @client.access_token) if (@client.access_token)
+      params.merge!(:method => :delete)
       puts "FBGRAPH [DELETE]: #{path}"
-      result = @client.consumer[path].post(@params.merge(:method => :delete))
+      puts "PARAMS: #{params.to_a.map{|p| p.join('=')}.join('&')}"      
+      result = @client.consumer[path].post(params)
       return parse_json(result, parsed)
     end
 
@@ -80,12 +86,9 @@ module FBGraph
     
     def parse_json(result, parsed)
       return parsed  ? Hashie::Mash.new(JSON.parse(result.body)) : result.body
-    end
+    end        
     
-    
-    
-    def build_open_graph_path(objects,connection_type = nil , params = {})
-      params.merge!(:access_token => @client.access_token)
+    def build_open_graph_path(objects, connection_type = nil , params = {})
       request = [objects , connection_type].compact.join('/')
       request += "?"+params.to_a.map{|p| p.join('=')}.join('&') unless params.empty?
       URI.encode(request)
