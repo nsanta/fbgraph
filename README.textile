@@ -1,4 +1,4 @@
-h2. FBGRaph (0.1.4)
+h2. FBGRaph (0.1.6.3)
 
 p. Facebook Open Graph API Gem.
 
@@ -77,9 +77,9 @@ h2. TODO
 
 h3. Canvas
 
+Facebook send a segned_request as a parameter. Can be decoded with the method parse_signed_request of FBGraph::Canvas module
 
-h2. TODO
-
+> FBGraph::Canvas.parse_signed_request(params[:signed_request])
 
 h3. Selection
 
