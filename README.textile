@@ -249,3 +249,5 @@ h2. Contributors List
 
 "Thilo-Alexander Ginkel":http://github.com/ginkel
 
+"Matias Käkelä":http://github.com/massive
+
