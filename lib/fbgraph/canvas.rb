@@ -1,4 +1,4 @@
-module Fbgraph
+module FBGraph
   
   class Canvas
     
