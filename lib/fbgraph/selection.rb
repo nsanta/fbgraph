@@ -38,10 +38,10 @@ module FBGraph
       self
     end   
 
-    def picture
-      uri = [@client.facebook_uri , build_open_graph_path(@objects , 'picture')].join('/')
+    def picture(type='square')
+      uri = [@client.facebook_uri , build_open_graph_path(@objects , 'picture')].join('/') + '?type=' + type
       return uri if @client.access_token.nil?
-      uri + '?access_token=' + @client.access_token
+      uri + '&access_token=' + @client.access_token
 
     end
 
