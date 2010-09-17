@@ -1,14 +1,14 @@
 module FBGraph
   class Selection < Base
     
-    OBJECTS = %w(user album event group link note page photo post status video).freeze
+    OBJECTS = %w(user album event group link note page photo post status video comment checkin).freeze
    
     CONNECTION_TYPES = %w(home photos comments feed	noreply	
                           maybe invited attending declined picture 
                           members tagged links groups albums	
                           statuses	videos notes posts events friends	
                           activities interests music books movies television	
-                          likes inbox outbox updates accounts).freeze
+                          likes inbox outbox updates accounts chekins).freeze
    
     OBJECTS.each do |object|
       class_eval  <<-METHOD
@@ -38,10 +38,11 @@ module FBGraph
       self
     end   
 
-    def picture
-      uri = @client.facebook_uri + build_open_graph_path(@objects , 'picture')
-      return uri unless @client.consumer
-      uri + '?access_token=' + @client.consumer.token
+    def picture(type='square')
+      uri = [@client.facebook_uri , build_open_graph_path(@objects , 'picture')].join('/') + '?type=' + type
+      return uri if @client.access_token.nil?
+      uri + '&access_token=' + @client.access_token
+
     end
 
   end
