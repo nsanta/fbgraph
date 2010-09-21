@@ -39,10 +39,9 @@ module FBGraph
     end   
 
     def picture(type='square')
-      uri = [@client.facebook_uri , build_open_graph_path(@objects , 'picture')].join('/') + '?type=' + type
-      return uri if @client.access_token.nil?
-      uri + '&access_token=' + @client.access_token
-
+      params = {:type => type}
+      params.merge!(:access_token => @client.access_token) unless @client.access_token.blank?
+      uri = [@client.facebook_uri , build_open_graph_path(@objects , 'picture' , params)].join('/')
     end
 
   end
