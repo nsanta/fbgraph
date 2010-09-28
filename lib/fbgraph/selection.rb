@@ -8,7 +8,7 @@ module FBGraph
                           members tagged links groups albums	
                           statuses	videos notes posts events friends	
                           activities interests music books movies television	
-                          likes inbox outbox updates accounts chekins).freeze
+                          likes inbox outbox updates accounts checkins).freeze
    
     OBJECTS.each do |object|
       class_eval  <<-METHOD
