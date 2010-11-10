@@ -1,5 +1,8 @@
 require 'rubygems'
+require "bundler/setup"
 require 'rake'
+require 'spec'
+require 'spec/rake/spectask'
 require 'echoe'
 
 Echoe.new('fbgraph', '0.1.6.4.1') do |p|
