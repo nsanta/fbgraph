@@ -14,3 +14,4 @@ build/*
 .svn
 profile
 vendor/*
+gemspec/*

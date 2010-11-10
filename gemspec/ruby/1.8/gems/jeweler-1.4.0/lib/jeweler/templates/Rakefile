@@ -1,6 +1,0 @@
-require 'rubygems'
-require 'rake'
-
-<%= render_template 'jeweler_tasks.erb' %>
-
-<%= render_template 'other_tasks.erb' %>
