@@ -2,8 +2,9 @@ require 'rubygems'
 require 'bundler/setup'
 #require File.dirname(__FILE__) + "/lib/fbgraph.rb"
 require 'rake'
-require 'spec'
-require 'spec/rake/spectask'
+require 'rspec'
+require 'rspec/core/rake_task'
+require 'rcov'
 
 #$LOAD_PATH.unshift "/Users/technicalpickles/code/active/jeweler/lib"
 begin
@@ -22,12 +23,12 @@ rescue LoadError
 end
 
 
-require 'spec/rake/spectask'
-
 spec_files = FileList[File.join(File.dirname(__FILE__), 'specs', '**', '*_spec.rb')]
 
-desc "Run specs"
-Spec::Rake::SpecTask.new do |t|
-  t.spec_files = spec_files
-  t.spec_opts = ["-c"]
+desc  "Run all specs"
+RSpec::Core::RakeTask.new do |t|
+  t.pattern = "./specs/**/*_spec.rb"
+#  t.rcov = true
+#  t.rcov_opts = t.rcov_opts = ['--exclude', 'spec']
 end
+

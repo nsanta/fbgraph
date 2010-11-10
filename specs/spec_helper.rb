@@ -1,6 +1,7 @@
 $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 require 'rubygems'
 require 'fbgraph'
+require 'redgreen'
 
 def expect_consumer(uri, result = '')
   consumer = @client.consumer[uri]
