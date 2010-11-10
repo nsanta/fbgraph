@@ -13,6 +13,12 @@ module FBGraph
       return true
     end
     
+    def set_token(new_token)
+      @access_token = new_token
+      @auth = OAuth2::AccessToken.new(oauth_client , @access_token)
+      new_token
+    end
+
     def authorization
       FBGraph::Authorization.new(self)
     end
