@@ -1,5 +1,4 @@
 require 'hashie/mash'
-require 'json'
 
 module FBGraph
   class Result

@@ -1,20 +1,33 @@
 require 'rubygems'
-require "bundler/setup"
+require 'bundler/setup'
+#require File.dirname(__FILE__) + "/lib/fbgraph.rb"
 require 'rake'
 require 'spec'
 require 'spec/rake/spectask'
-require 'echoe'
 
-Echoe.new('fbgraph', '0.1.6.4.1') do |p|
-  p.description    = "A Gem for Facebook Open Graph API"
-  p.url            = "http://github.com/nsanta/fbgraph"
-  p.author         = "Nicolas Santa"
-  p.email          = "nicolas55ar@gmail.com"
-  p.ignore_pattern = ["tmp/*", "script/*"]
-  p.development_dependencies = ['echoe', 'rspec']
-  p.runtime_dependencies = ['oauth2' , 'json', 'hashie' , 'rest-client']
+#$LOAD_PATH.unshift "/Users/technicalpickles/code/active/jeweler/lib"
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |s|
+    s.name = "fbgraph"
+    s.description = "A Gem for Facebook Open Graph API"
+    s.summary = "A Gem for Facebook Open Graph API"
+    s.homepage = "http://github.com/nsanta/fbgraph"
+    s.author         = "Nicolas Santa"
+    s.email          = "nicolas55ar@gmail.com"
+    Bundler.environment.dependencies.to_set.collect { |g| s.add_runtime_dependency g.name, " #{g.send(:requirement).to_s}" }
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: gem install jeweler"
 end
 
-Spec::Rake::SpecTask.new(:rspec) do |t|
-  t.spec_files = FileList[File.join(File.dirname(__FILE__), 'specs', '**', '*_spec.rb')]
+
+require 'spec/rake/spectask'
+
+spec_files = FileList[File.join(File.dirname(__FILE__), 'specs', '**', '*_spec.rb')]
+
+desc "Run specs"
+Spec::Rake::SpecTask.new do |t|
+  t.spec_files = spec_files
+  t.spec_opts = ["-c"]
 end

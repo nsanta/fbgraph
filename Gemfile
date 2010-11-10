@@ -1,13 +1,15 @@
-source 'http://gems.github.com'
-source 'http://rubygems.org'
+source "http://gems.github.com"
+source "http://rubygems.org"
 
-gem 'rake'
-gem 'bundler'
-gem 'activesupport', '3.0.1'
-gem 'rspec', '1.3.1'
-gem 'hashie'
-gem 'echoe'
-gem 'fakeweb'
-gem 'oauth2'
-gem 'json'
-gem 'rest-client', :require => 'rest_client'
+gem "jeweler"
+gem "rake"
+gem "bundler"
+gem "activesupport", "3.0.1"
+gem "hashie"
+gem "oauth2"
+gem "json"
+gem "rest-client", :require => "rest_client"
+gem "fakeweb"
+gem "rspec", "1.3.1"
+gem "echoe"
+
