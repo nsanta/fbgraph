@@ -26,5 +26,8 @@ module FBGraph
     end
     include Comparable
 
+    def method_missing(method, *args, &block)
+      data.send(method, *args, &block)
+    end
   end
 end
