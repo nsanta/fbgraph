@@ -12,3 +12,4 @@ build/*
 *.mode1v3
 .svn
 profile
+vendor/*
