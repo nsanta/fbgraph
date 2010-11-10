@@ -38,13 +38,16 @@ module FBGraph
       return self
     end
 
-    def fields
-      @fields.flatten.map(&:to_s).compact
+    def with_fields(*new_fields)
+      @fields.concat(new_fields) if !(new_fields.blank? rescue true)
+      @fields = sanitized_fields
+      self
     end
+    alias :fields :with_fields
 
     def info!(parsed = true, &block)
       yield(self) if block_given?
-      @params.merge!(:fields => fields.join(','))
+      @params.merge!(:fields => sanitized_fields.join(','))
       @params.merge!(:access_token => @client.access_token) unless @client.access_token.nil?
       if @objects.is_a? Array
         @params.merge!({:ids => @objects.join(',')})
@@ -63,7 +66,7 @@ module FBGraph
     def publish!(data = {},parsed = true, &block)
       @params.merge!(data)
       yield(self) if block_given?
-      @params.merge!(:fields => fields.join(','))
+      @params.merge!(:fields => sanitized_fields.join(','))
       params = @params.merge(:access_token => @client.access_token) if (@client.access_token)      
       path = build_open_graph_path(@objects , @connection_type)
       puts "FBGRAPH [POST]: #{path}"
@@ -95,6 +98,10 @@ module FBGraph
     
     private
     
+    def sanitized_fields
+      @fields.flatten.map(&:to_s).compact
+    end
+
     def parse_json(result, parsed)
       return parsed  ? Hashie::Mash.new(JSON.parse(result.body)) : result.body
     end        
