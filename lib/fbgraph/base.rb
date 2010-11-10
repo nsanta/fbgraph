@@ -1,9 +1,8 @@
 module FBGraph
   
   class Base
-    
-    attr_reader :objects , :connection_type , :logger, :fields
 
+    attr_reader :objects , :connection_type , :logger, :fields, :last_result
     
     def initialize(client)
       @client = client
@@ -11,14 +10,11 @@ module FBGraph
       @params = {}
     end
 
-
-    
     def find(objects)
       @objects = objects
       return self
     end
    
-  
     def connection(connection_type)
       @connection_type = connection_type
       return self
@@ -59,7 +55,7 @@ module FBGraph
       puts "FBGRAPH [GET]: #{path}"
       puts "ACCESS TOKEN: #{@client.access_token}"
       result = @client.consumer[path].get
-      return parse_json(result, parsed)
+      @last_result = Result.new(result, @params)
     end
   
   
@@ -72,7 +68,7 @@ module FBGraph
       puts "FBGRAPH [POST]: #{path}"
       puts "PARAMS: #{params.to_a.map{|p| p.join('=')}.join('&')}"
       result = @client.consumer[path].post(params)
-      return parse_json(result, parsed)
+      @last_result = Result.new(result, @params)
     end
   
     def delete!(parsed = true, &block)
@@ -83,7 +79,7 @@ module FBGraph
       puts "FBGRAPH [DELETE]: #{path}"
       puts "PARAMS: #{params.to_a.map{|p| p.join('=')}.join('&')}"      
       result = @client.consumer[path].post(params)
-      return parse_json(result, parsed)
+      @last_result = Result.new(result, @params)
     end
 
     %w(limit offset until since).each do |paging|
@@ -102,10 +98,6 @@ module FBGraph
       @fields.flatten.map(&:to_s).compact
     end
 
-    def parse_json(result, parsed)
-      return parsed  ? Hashie::Mash.new(JSON.parse(result.body)) : result.body
-    end        
-    
     def build_open_graph_path(objects, connection_type = nil , params = {})
       request = [objects , connection_type].compact.join('/')
       request += "?"+params.to_a.map{|p| p.join('=')}.join('&') unless params.empty?
