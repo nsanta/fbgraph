@@ -16,7 +16,7 @@ begin
     s.homepage = "http://github.com/nsanta/fbgraph"
     s.author         = "Nicolas Santa"
     s.email          = "nicolas55ar@gmail.com"
-    Bundler.environment.dependencies.to_set.collect { |g| s.add_runtime_dependency g.name, " #{g.send(:requirement).to_s}" }
+    Bundler.environment.dependencies.to_set.collect { |g| s.add_runtime_dependency g.name }
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"

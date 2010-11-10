@@ -1,6 +1,6 @@
-h2. FBGRaph (0.1.6.3)
+h2. FBGRaph
 
-p. Facebook Open Graph API Gem.
+p. Facebook Open Graph API Gem for Rails 3.
 
 
 h2. Resources
