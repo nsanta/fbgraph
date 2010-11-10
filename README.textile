@@ -251,3 +251,4 @@ h2. Contributors List
 
 "Matias Käkelä":http://github.com/massive
 
+"Matt Lightner (via RedRadiant)":http://github.com/redradiant
