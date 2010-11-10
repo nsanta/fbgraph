@@ -1,3 +1,5 @@
+require 'rubygems'
+require "bundler/setup"
 require 'oauth2'
 require 'json'
 require 'hashie'
@@ -6,6 +8,7 @@ require 'uri'
 require "base64"
 require "openssl"
 
+require 'fbgraph/result'
 require 'fbgraph/client'
 require 'fbgraph/base'
 require 'fbgraph/authorization'

@@ -11,6 +11,7 @@ module FBGraph
       @data = Hashie::Mash.new(JSON.parse(result)) rescue result
       @unparsed = result
       @params = params.symbolize_keys
+      self
     end
 
     # Implement enumerable
@@ -26,5 +27,8 @@ module FBGraph
     end
     include Comparable
 
+    def method_missing(method, *args, &block)
+      data.send(method, *args, &block)
+    end
   end
 end
