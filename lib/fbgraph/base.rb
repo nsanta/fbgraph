@@ -47,7 +47,7 @@ module FBGraph
 
     def info!(parsed = true, &block)
       yield(self) if block_given?
-      @params.merge!(:fields => sanitized_fields.join(','))
+      @params.merge!(:fields => sanitized_fields.join(',')) unless sanitized_fields.blank?
       @params.merge!(:access_token => @client.access_token) unless @client.access_token.nil?
       if @objects.is_a? Array
         @params.merge!({:ids => @objects.join(',')})
@@ -66,7 +66,7 @@ module FBGraph
     def publish!(data = {},parsed = true, &block)
       @params.merge!(data)
       yield(self) if block_given?
-      @params.merge!(:fields => sanitized_fields.join(','))
+      @params.merge!(:fields => sanitized_fields.join(',')) unless sanitized_fields.blank?
       params = @params.merge(:access_token => @client.access_token) if (@client.access_token)      
       path = build_open_graph_path(@objects , @connection_type)
       puts "FBGRAPH [POST]: #{path}"
