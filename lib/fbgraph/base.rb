@@ -39,7 +39,7 @@ module FBGraph
     end
 
     def fields
-      @fields.flatten.map(&to_s).compact
+      @fields.flatten.map(&:to_s).compact
     end
 
     def info!(parsed = true, &block)
