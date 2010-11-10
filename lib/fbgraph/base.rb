@@ -2,11 +2,12 @@ module FBGraph
   
   class Base
     
-    attr_reader :objects , :connection_type , :logger
+    attr_reader :objects , :connection_type , :logger, :fields
 
     
     def initialize(client)
       @client = client
+      @fields = []
       @params = {}
     end
 
@@ -35,9 +36,15 @@ module FBGraph
     def param(pm)
       @params.merge!(pm)
       return self
-    end  
+    end
 
-    def info!(parsed = true)
+    def fields
+      @fields.flatten.map(&to_s).compact
+    end
+
+    def info!(parsed = true, &block)
+      yield(self) if block_given?
+      @params.merge!(:fields => fields.join(','))
       @params.merge!(:access_token => @client.access_token) unless @client.access_token.nil?
       if @objects.is_a? Array
         @params.merge!({:ids => @objects.join(',')})
@@ -45,6 +52,7 @@ module FBGraph
       elsif @objects.is_a? String
         path = build_open_graph_path(@objects , @connection_type, @params)
       end
+      
       puts "FBGRAPH [GET]: #{path}"
       puts "ACCESS TOKEN: #{@client.access_token}"
       result = @client.consumer[path].get
@@ -52,8 +60,10 @@ module FBGraph
     end
   
   
-    def publish!(data = {},parsed = true)
+    def publish!(data = {},parsed = true, &block)
       @params.merge!(data)
+      yield(self) if block_given?
+      @params.merge!(:fields => fields.join(','))
       params = @params.merge(:access_token => @client.access_token) if (@client.access_token)      
       path = build_open_graph_path(@objects , @connection_type)
       puts "FBGRAPH [POST]: #{path}"
@@ -62,7 +72,8 @@ module FBGraph
       return parse_json(result, parsed)
     end
   
-    def delete!(parsed = true)
+    def delete!(parsed = true, &block)
+      yield(self) if block_given?
       path = build_open_graph_path(@objects , nil)
       params = @params.merge(:access_token => @client.access_token) if (@client.access_token)
       params.merge!(:method => :delete)
