@@ -9,8 +9,16 @@ module FBGraph
       result = result.respond_to?(:body) ? result.body : result.to_s
       @data = Hashie::Mash.new(JSON.parse(result)) rescue result
       @unparsed = result
-      @params = params.symbolize_keys
+      @params = params.symbolize_keys      
       self
+    end
+
+    def paging
+      data.paging
+    end
+
+    def metadata
+      data.metadata
     end
 
     # Implement enumerable
@@ -27,7 +35,7 @@ module FBGraph
     include Comparable
 
     def method_missing(method, *args, &block)
-      data.send(method, *args, &block)
+      data.send(method, *args, &block) rescue super(method, *args, &block)
     end
   end
 end
