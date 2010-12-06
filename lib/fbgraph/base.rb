@@ -52,8 +52,8 @@ module FBGraph
         path = build_open_graph_path(@objects , @connection_type, @params)
       end
       
-      puts "FBGRAPH [GET]: #{path}"
-      puts "ACCESS TOKEN: #{@client.access_token}"
+      # puts "FBGRAPH [GET]: #{path}"
+      # puts "ACCESS TOKEN: #{@client.access_token}"
       result = @client.consumer[path].get
       @last_result = ::FBGraph::Result.new(result, @params)
     end
@@ -65,8 +65,8 @@ module FBGraph
       @params.merge!(:fields => sanitized_fields.join(',')) unless sanitized_fields.blank?
       params = @params.merge(:access_token => @client.access_token) if (@client.access_token)      
       path = build_open_graph_path(@objects , @connection_type)
-      puts "FBGRAPH [POST]: #{path}"
-      puts "PARAMS: #{params.to_a.map{|p| p.join('=')}.join('&')}"
+      # puts "FBGRAPH [POST]: #{path}"
+      # puts "PARAMS: #{params.to_a.map{|p| p.join('=')}.join('&')}"
       result = @client.consumer[path].post(params)
       @last_result = ::FBGraph::Result.new(result, @params)
     end
@@ -76,8 +76,8 @@ module FBGraph
       path = build_open_graph_path(@objects , nil)
       params = @params.merge(:access_token => @client.access_token) if (@client.access_token)
       params.merge!(:method => :delete)
-      puts "FBGRAPH [DELETE]: #{path}"
-      puts "PARAMS: #{params.to_a.map{|p| p.join('=')}.join('&')}"      
+      # puts "FBGRAPH [DELETE]: #{path}"
+      # puts "PARAMS: #{params.to_a.map{|p| p.join('=')}.join('&')}"      
       result = @client.consumer[path].post(params)
       @last_result = ::FBGraph::Result.new(result, @params)
     end
