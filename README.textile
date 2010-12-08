@@ -237,6 +237,13 @@ h2. Contributions
 p. Just do a pull request with the repo in sync.
 
 
+
+h2. Maintainers
+
+"Nicolas Santa":http://github.com/nsanta
+
+"Matt Lightner (via RedRadiant)":http://github.com/redradiant
+
 h2. Contributors List
 
 "Victor Costan":http://github.com/costan
@@ -251,4 +258,4 @@ h2. Contributors List
 
 "Matias Käkelä":http://github.com/massive
 
-"Matt Lightner (via RedRadiant)":http://github.com/redradiant
+
