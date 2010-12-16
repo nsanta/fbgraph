@@ -1,16 +1,19 @@
 source "http://gems.github.com"
 source "http://rubygems.org"
 
-gem "jeweler"
-gem "rake"
-gem "bundler"
 gem "activesupport"
 gem "hashie"
 gem "oauth2"
 gem "json"
 gem "rest-client", :require => "rest_client"
-gem "fakeweb"
-gem "rspec"
-gem "echoe"
-gem "rcov"
-gem "redgreen"
+
+
+group :development do
+  gem "jeweler"
+  gem "rake"
+  gem "bundler"
+  gem "fakeweb"
+  gem "rspec"
+  gem "rcov"
+  gem "redgreen"
+end

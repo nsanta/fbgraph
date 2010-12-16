@@ -16,8 +16,7 @@ begin
     s.homepage = "http://github.com/nsanta/fbgraph"
     s.author         = "Nicolas Santa"
     s.email          = "nicolas55ar@gmail.com"
-    %w(activesupport hashie oauth2 json rest-client).each { |g| s.add_runtime_dependency g  }
-    %w(rake rspec rcov bundler fakeweb jeweler echoe redgreen).each { |g| s.add_development_dependency g }
+    s.add_bundler_dependencies
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"
