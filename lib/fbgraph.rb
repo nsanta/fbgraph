@@ -1,5 +1,6 @@
 require 'rubygems'
 require "bundler/setup"
+require 'active_support/all'
 require 'oauth2'
 require 'json'
 require 'hashie'
