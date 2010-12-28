@@ -22,7 +22,7 @@ module FBGraph
   @config = {}
 
   class << self
-    
+
     def load_config(yaml_file)
       return false unless File.exist?(yaml_file)
       cfg = YAML::load(File.open(yaml_file))
@@ -33,8 +33,9 @@ module FBGraph
     end
 
     def config
-      @config ||= load_config(File.join(Rails.root , 'config' , 'facebook.yml')).freeze
+      return @config if @config.any?
+      load_config(File.join(Rails.root , 'config' , 'facebook.yml')).freeze
     end
-    
+
   end
 end
