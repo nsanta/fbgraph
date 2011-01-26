@@ -47,11 +47,11 @@ p. All methods are chainable
 
 Examples:
 
-notextile. <code>client.selection.me.photos.until(Time.now.to_s).since(3.days.ago).limit(10).info</code>
+notextile. <code>client.selection.me.photos.until(Time.now.to_s).since(3.days.ago).limit(10).info!</code>
 
-notextile. <code>client.selection.user('id').videos.offset(10).info</code>
+notextile. <code>client.selection.user('id').videos.offset(10).info!</code>
 
-notextile. <code>client.search.query('q').on('users').limit(20).info</code>
+notextile. <code>client.search.query('q').on('users').limit(20).info!</code>
 
 h3. Rails config file
 
@@ -230,6 +230,15 @@ h4. TODO
 h3. Advanced
 
 h4. not documented yet
+
+
+h2 Credits
+
+Examples:
+
+notextile. <code> results = client.selection.user(USER_ID).payments.info!(:status => STATUS). </code>
+
+notextile. <code> results = client.selection.order(ORDER_ID).publish!(:status => STATUS) </code>  
 
 
 h2. Contributions
