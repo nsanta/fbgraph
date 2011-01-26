@@ -50,6 +50,8 @@ module FBGraph
         path = build_open_graph_path(nil,nil, params)
       elsif @objects.is_a? String
         path = build_open_graph_path(@objects , @connection_type, @params)
+      else
+        raise "No Facebook objects were recognized as selected; unable to build fb graph path."
       end
       
       # puts "FBGRAPH [GET]: #{path}"
