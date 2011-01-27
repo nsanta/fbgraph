@@ -236,7 +236,7 @@ h3. Advanced
 h4. not documented yet
 
 
-h2 Credits
+h2. Credits
 
 Examples:
 
@@ -271,4 +271,4 @@ h2. Contributors List
 
 "Matias Käkelä":http://github.com/massive
 
-
+h4.
