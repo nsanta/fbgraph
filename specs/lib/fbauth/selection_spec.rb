@@ -16,7 +16,7 @@ describe FBGraph do
     describe "when asking for an object's picture" do
       it "should append the access token" do
         @selection.me.picture.should ==
-            "https://graph.facebook.com/me/picture?access_token=#{@token}"
+            "https://graph.facebook.com/me/picture?type=square&access_token=#{@token}"
       end
       
       it "should not append an access token if none is available" do
@@ -25,7 +25,7 @@ describe FBGraph do
         selection = FBGraph::Selection.new(client)                              
 
         selection.me.picture.should ==
-            "https://graph.facebook.com/me/picture"
+            "https://graph.facebook.com/me/picture?type=square"
       end
     end
   end  

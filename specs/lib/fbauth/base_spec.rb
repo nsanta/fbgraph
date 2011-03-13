@@ -94,7 +94,7 @@ describe FBGraph do
 
           describe 'when params are passed' do
             it 'should request with the path "/123?fields=name,picture"' do
-              uri = "123?fields=name,picture&access_token=token"
+              uri = "123?access_token=token&fields=name,picture"
               @base.find('123')
               @base.params = {:fields => "name,picture"}
               expect_consumer(uri)
