@@ -7,6 +7,7 @@ gem "oauth2"
 gem "json"
 gem "rest-client", :require => "rest_client"
 gem "i18n"
+gem "typhoeus"
 
 group :development do
   gem "jeweler"

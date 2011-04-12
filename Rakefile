@@ -16,14 +16,12 @@ begin
     s.homepage = "http://github.com/nsanta/fbgraph"
     s.author         = "Nicolas Santa"
     s.email          = "nicolas55ar@gmail.com"
+    s.files = FileList["[A-Z]*", "{.bundle,bin,lib,specs}/**/*"] - ["Gemfile.lock"]
     s.add_bundler_dependencies
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"
 end
-
-
-spec_files = FileList[File.join(File.dirname(__FILE__), 'specs', '**', '*_spec.rb')]
 
 desc  "Run all specs"
 RSpec::Core::RakeTask.new do |t|
@@ -31,4 +29,3 @@ RSpec::Core::RakeTask.new do |t|
 #  t.rcov = true
 #  t.rcov_opts = t.rcov_opts = ['--exclude', 'spec']
 end
-
