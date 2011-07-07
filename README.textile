@@ -83,7 +83,7 @@ h3. Canvas
 
 Facebook send a segned_request as a parameter. Can be decoded with the method parse_signed_request of FBGraph::Canvas module
 
-> FBGraph::Canvas.parse_signed_request(params[:signed_request])
+> FBGraph::Canvas.parse_signed_request(app_secret, params[:signed_request])
 
 h3. Selection
 
