@@ -11,13 +11,13 @@ module FBGraph
       @facebook_uri = options[:facebook_uri] || 'https://graph.facebook.com'
       @consumer = RestClient::Resource.new(@facebook_uri, rest_client_ssl_options)
       @access_token = options.fetch :token, nil
-      @auth = OAuth2::AccessToken.new(oauth_client , @access_token)
+      @auth = OAuth2::AccessToken.new(oauth_client, @access_token)
       return true
     end
     
     def set_token(new_token)
       @access_token = new_token
-      @auth = OAuth2::AccessToken.new(oauth_client , @access_token)
+      @auth = OAuth2::AccessToken.new(oauth_client, @access_token)
       new_token
     end
 
@@ -46,8 +46,7 @@ module FBGraph
     end
 
     def oauth_client_ssl_options
-      { :verify => OpenSSL::SSL::VERIFY_PEER,
-        :cert_store => OpenSSL::X509::Store.new(@ca_file) }
+      { :ca_file => @ca_file, :verify => OpenSSL::SSL::VERIFY_PEER }
     end
     
     def rest_client_ssl_options

@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/nsanta/fbgraph"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.11"
+  s.rubygems_version = "1.8.10"
   s.summary = "A Gem for Facebook Open Graph API"
 
   if s.respond_to? :specification_version then
@@ -58,6 +58,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<activesupport>, [">= 0"])
       s.add_runtime_dependency(%q<hashie>, [">= 1.0.0"])
       s.add_runtime_dependency(%q<oauth2>, [">= 0.5.0"])
+      s.add_runtime_dependency(%q<faraday>, [">= 0.7.5"])
       s.add_runtime_dependency(%q<json>, [">= 1.0.0"])
       s.add_runtime_dependency(%q<rest-client>, [">= 0"])
       s.add_runtime_dependency(%q<i18n>, [">= 0"])
@@ -73,6 +74,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<activesupport>, [">= 0"])
       s.add_dependency(%q<hashie>, [">= 1.0.0"])
       s.add_dependency(%q<oauth2>, [">= 0.5.0"])
+      s.add_dependency(%q<faraday>, [">= 0.7.5"])
       s.add_dependency(%q<json>, [">= 1.0.0"])
       s.add_dependency(%q<rest-client>, [">= 0"])
       s.add_dependency(%q<i18n>, [">= 0"])
@@ -89,6 +91,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<activesupport>, [">= 0"])
     s.add_dependency(%q<hashie>, [">= 1.0.0"])
     s.add_dependency(%q<oauth2>, [">= 0.5.0"])
+    s.add_dependency(%q<faraday>, [">= 0.7.5"])
     s.add_dependency(%q<json>, [">= 1.0.0"])
     s.add_dependency(%q<rest-client>, [">= 0"])
     s.add_dependency(%q<i18n>, [">= 0"])

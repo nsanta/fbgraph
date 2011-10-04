@@ -2,8 +2,9 @@ source :rubygems
 
 gem "activesupport"
 gem "hashie", ">= 1.0.0"
-gem "oauth2", '>= 0.5.0'
-gem "json", '>= 1.0.0'
+gem "oauth2", ">= 0.5.0"
+gem "faraday", ">= 0.7.5"
+gem "json", ">= 1.0.0"
 gem "rest-client", :require => "rest_client"
 gem "i18n"
 
