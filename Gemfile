@@ -1,20 +1,20 @@
-source "http://gems.github.com"
-source "http://rubygems.org"
+source :rubygems
 
 gem "activesupport"
-gem "hashie"
-gem "oauth2"
-gem "json"
+gem "hashie", ">= 1.0.0"
+gem "oauth2", '>= 0.5.0'
+gem "json", '>= 1.0.0'
 gem "rest-client", :require => "rest_client"
 gem "i18n"
-gem "typhoeus"
+gem "typhoeus", '>= 0.2.0'
 
 group :development do
-  gem "jeweler"
-  gem "rake"
-  gem "bundler"
-  gem "fakeweb"
-  gem "rspec"
-  gem "rcov"
-  gem "redgreen"
+  gem "jeweler", "~> 1.6.0"
+  gem "rake", "~> 0.9.2"
+  gem "bundler", "~> 1.0.0"
+  gem "fakeweb", "~> 1.3.0"
+  gem "rspec", ">= 2.6.0"
+  gem "rcov", ">= 0"
+  gem "rdoc", ">= 3.9.0"
+  gem "redgreen", "~> 1.2.2"
 end

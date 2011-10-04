@@ -1,7 +1,11 @@
 $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 require 'rubygems'
 require 'fbgraph'
-require 'redgreen'
+begin
+  require 'redgreen'
+rescue LoadError
+  # No pretty colors in Ruby 1.9+.
+end
 
 def expect_consumer(uri, result = '')
   consumer = @client.consumer[uri]

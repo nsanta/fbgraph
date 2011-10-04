@@ -8,7 +8,7 @@ describe FBGraph do
       @secret_id = 'secret_id'
       @client = FBGraph::Client.new(:client_id => @client_id,
                                     :secret_id => @secret_id)
-      @authorization = FBGraph::Authorization.new(@client)                              
+      @authorization = FBGraph::Authorization.new(@client)
     end
 
     describe 'initialization' do
@@ -21,16 +21,16 @@ describe FBGraph do
       describe '.authorize_url' do
         it 'should return the authorization url' do
           @authorization.authorize_url(:redirect_uri => 'redirect/to/path' , 
-                                       :scope => 'email,user_photos,friends_photos').should == "https://graph.facebook.com/oauth/authorize?scope=email%2Cuser_photos%2Cfriends_photos&client_id=client_id&type=web_server&redirect_uri=redirect%2Fto%2Fpath"
+                                       :scope => 'email,user_photos,friends_photos').should == "https://graph.facebook.com/oauth/authorize?response_type=code&client_id=client_id&redirect_uri=redirect%2Fto%2Fpath&scope=email%2Cuser_photos%2Cfriends_photos"
         end
       end
       describe "process_callback" do
         before :each do
           @consumer = mock('Consumer' , :token => 'code')
           options = {:redirect_uri => 'redirect/to/path'}
-          @client.stub!(:oauth_client)
-          @client.oauth_client.stub!(:web_server)
-          @client.oauth_client.web_server.stub!(:get_access_token).with(@consumer.token, options).and_return(@consumer)
+          @client.stub!(:oauth_client).and_return(Object.new)
+          @client.oauth_client.stub!(:auth_code).and_return(Object.new)
+          @client.oauth_client.auth_code.stub!(:get_token).with(@consumer.token, options).and_return(@consumer)
           @token = @authorization.process_callback(@consumer.token, options)
         end
         it 'should return the access_token' do
