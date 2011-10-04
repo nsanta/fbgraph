@@ -6,7 +6,6 @@ gem "oauth2", '>= 0.5.0'
 gem "json", '>= 1.0.0'
 gem "rest-client", :require => "rest_client"
 gem "i18n"
-gem "typhoeus", '>= 0.2.0'
 
 group :development do
   gem "jeweler", "~> 1.6.0"

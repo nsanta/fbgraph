@@ -38,13 +38,18 @@ module FBGraph
     end
     
     def oauth_client
-      OAuth2::Client.new(client_id, secret_id, :site => { :url => facebook_uri }, :ssl => oauth_client_ssl_options, :adapter => :typhoeus)
+      OAuth2::Client.new(client_id, secret_id,
+          :site => { :url => facebook_uri },
+          :token_url => '/oauth/access_token',
+          :authorize_url => '/oauth/authorize',
+          :ssl => oauth_client_ssl_options)
     end
 
     def oauth_client_ssl_options
-      { :ca_file => @ca_file, :verify => OpenSSL::SSL::VERIFY_PEER }
+      { :verify => OpenSSL::SSL::VERIFY_PEER,
+        :cert_store => OpenSSL::X509::Store.new(@ca_file) }
     end
-
+    
     def rest_client_ssl_options
       { :ssl_ca_file => @ca_file, :verify_ssl => OpenSSL::SSL::VERIFY_PEER }
     end
@@ -52,5 +57,13 @@ module FBGraph
     def default_ca_file
       File.join(File.dirname(__FILE__), 'cacert.pem')
     end
+  end
+end
+
+# :nodoc: undo the clusterfuck that rest-client has done
+module Net
+  class HTTP
+    undef request
+    alias request __request__
   end
 end

@@ -13,7 +13,11 @@ module FBGraph
     
 
     def process_callback(code, options = {})
-      options = { :redirect_uri => FBGraph.config[:canvas_url] }.merge(options)
+      # HACK(pwnall): :parse => :query is added because Facebook's tarded OAuth
+      #               endpoint returns ContentType: text/plain instead of
+      #               application/x-www-form-urlencoded
+      options = { :redirect_uri => FBGraph.config[:canvas_url],
+                  :parse => :query }.merge(options)
       @client.auth = @client.oauth_client.auth_code.get_token(code, options)
       @client.access_token = @client.auth.token
     end

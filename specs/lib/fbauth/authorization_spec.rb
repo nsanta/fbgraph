@@ -27,7 +27,7 @@ describe FBGraph do
       describe "process_callback" do
         before :each do
           @consumer = mock('Consumer' , :token => 'code')
-          options = {:redirect_uri => 'redirect/to/path'}
+          options = {:redirect_uri => 'redirect/to/path', :parse=>:query}
           @client.stub!(:oauth_client).and_return(Object.new)
           @client.oauth_client.stub!(:auth_code).and_return(Object.new)
           @client.oauth_client.auth_code.stub!(:get_token).with(@consumer.token, options).and_return(@consumer)
