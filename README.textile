@@ -257,9 +257,9 @@ h2. Maintainers
 
 "Matt Lightner (via RedRadiant)":http://github.com/redradiant
 
-h2. Contributors List
+"Victor Costan":http://github.com/pwnall
 
-"Victor Costan":http://github.com/costan
+h2. Contributors List
 
 "Mark Bates":http://github.com/markbates
 
