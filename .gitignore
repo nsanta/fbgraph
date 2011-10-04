@@ -11,6 +11,7 @@ coverage.data
 build/*
 *.pbxuser
 *.mode1v3
+.project
 .svn
 profile
 vendor/*
