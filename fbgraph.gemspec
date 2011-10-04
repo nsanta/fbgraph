@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "fbgraph"
-  s.version = "1.8.1"
+  s.version = "1.8.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nicolas Santa"]
@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/nsanta/fbgraph"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.11"
   s.summary = "A Gem for Facebook Open Graph API"
 
   if s.respond_to? :specification_version then
