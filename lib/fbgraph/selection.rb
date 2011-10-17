@@ -1,20 +1,20 @@
 module FBGraph
   class Selection < Base
-    
-    OBJECTS = %w(user album event group link note page photo post status 
+
+    OBJECTS = %w(user album event group link note page photo post status
                  video comment checkin friendlist thread order application
                  apprequest).freeze
-   
-    CONNECTION_TYPES = %w(home photos comments feed	noreply	
-                          maybe invited attending declined picture 
-                          members tagged links groups albums	
-                          statuses	videos notes posts events friends	
-                          activities interests music books movies television	
-                          likes inbox outbox updates accounts checkins 
-                          friendlists platformrequests threads participants 
-                          former_participants senders messages insights 
+
+    CONNECTION_TYPES = %w(home photos comments feed	noreply
+                          maybe invited attending declined picture
+                          members tagged links groups albums
+                          statuses	videos notes posts events friends
+                          activities interests music books movies television
+                          likes inbox outbox updates accounts checkins
+                          friendlists platformrequests threads participants
+                          former_participants senders messages insights
                           subscriptions payments apprequests).freeze
-   
+
     OBJECTS.each do |object|
       class_eval  <<-METHOD
         def #{object}(object)
@@ -23,7 +23,7 @@ module FBGraph
         end
      METHOD
     end
-   
+
     CONNECTION_TYPES.each do |object|
       class_eval  <<-METHOD
         def #{object}
@@ -37,11 +37,17 @@ module FBGraph
     def me
       find('me')
     end
-   
+
+
+    def action(namespace,action)
+      connection([namespace,action].join(':'))
+      self
+    end
+
     def metadata
       @params.merge!({:metadata => '1'})
       self
-    end   
+    end
 
     def picture(type='square')
       params = {:type => type}
@@ -51,3 +57,4 @@ module FBGraph
 
   end
 end
+
