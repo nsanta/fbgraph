@@ -106,8 +106,8 @@ module FBGraph
     end
 
     def show_log(ver, path, params)
-       puts "FBGRAPH [#{verb}]: #{path}"
-       puts "PARAMS: #{params.to_a.map{|p| p.join('=')}.join('&')}"      
+       client.logger.info "FBGRAPH [#{verb}]: #{path}"
+       client.logger.info "PARAMS: #{params.to_a.map{|p| p.join('=')}.join('&')}"      
     end
 
   end  

@@ -2,7 +2,7 @@ module FBGraph
   
   class Client
 
-    attr_accessor :client_id , :secret_id , :facebook_uri , :access_token , :consumer , :auth
+    attr_accessor :client_id , :secret_id , :facebook_uri , :access_token , :consumer , :auth , :logger
       
     def initialize(options = {})
       @client_id = options[:client_id] || FBGraph.config[:client_id]
@@ -12,6 +12,7 @@ module FBGraph
       @consumer = RestClient::Resource.new(@facebook_uri, rest_client_ssl_options)
       @access_token = options.fetch :token, nil
       @auth = OAuth2::AccessToken.new(oauth_client, @access_token)
+      @logger = options[:logger] || FBGraph::Logger
       return true
     end
     
