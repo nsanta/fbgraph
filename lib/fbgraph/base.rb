@@ -63,20 +63,20 @@ module FBGraph
       @params.merge!(data)
       self.instance_eval(&block) if block_given?
       @params.merge!(:fields => sanitized_fields.join(',')) unless sanitized_fields.blank?
-      params = @params.merge(:access_token => @client.access_token) if (@client.access_token)      
-      path = build_open_graph_path(@objects , @connection_type)
-      show_log('POST' , path, params) if @debug
-      result = @client.consumer[path].post(params)
+      @params.merge!(:access_token => @client.access_token) if (@client.access_token)      
+      @path = build_open_graph_path(@objects , @connection_type)
+      show_log('POST' , @path, @params) if @debug
+      result = @client.consumer[@path].post(params)
       @last_result = ::FBGraph::Result.new(result, @params)
     end
   
     def delete!(parsed = true, &block)
       self.instance_eval(&block) if block_given?
-      path = build_open_graph_path(@objects , nil)
-      params = @params.merge(:access_token => @client.access_token) if (@client.access_token)
-      params.merge!(:method => :delete)
-      show_log('DELETE' , path, params) if @debug
-      result = @client.consumer[path].post(params)
+      @path = build_open_graph_path(@objects , nil)
+      @params.merge!(:access_token => @client.access_token) if (@client.access_token)
+      @params.merge!(:method => :delete)
+      show_log('DELETE' , @path, @params) if @debug
+      result = @client.consumer[@path].post(@params)
       @last_result = ::FBGraph::Result.new(result, @params)
     end
 
