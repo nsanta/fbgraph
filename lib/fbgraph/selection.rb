@@ -3,7 +3,7 @@ module FBGraph
 
     OBJECTS = %w(user album event group link note page photo post status
                  video comment checkin friendlist thread order application
-                 apprequest).freeze
+                 apprequest subscription).freeze
 
     CONNECTION_TYPES = %w(home photos comments feed	noreply
                           maybe invited attending declined picture
