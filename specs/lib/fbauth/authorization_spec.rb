@@ -21,7 +21,7 @@ describe FBGraph do
       describe '.authorize_url' do
         it 'should return the authorization url' do
           @authorization.authorize_url(:redirect_uri => 'redirect/to/path' , 
-                                       :scope => 'email,user_photos,friends_photos').should == "https://graph.facebook.com/oauth/authorize?response_type=code&client_id=client_id&redirect_uri=redirect%2Fto%2Fpath&scope=email%2Cuser_photos%2Cfriends_photos"
+                                       :scope => 'email,user_photos,friends_photos').should =~ /redirect_uri=redirect%2Fto%2Fpath/
         end
       end
       describe "process_callback" do
