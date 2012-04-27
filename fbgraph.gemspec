@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{fbgraph}
+  s.name = "fbgraph"
   s.version = "1.9.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Nicolas Santa}]
-  s.date = %q{2011-10-17}
-  s.description = %q{A Gem for Facebook Open Graph API}
-  s.email = %q{nicolas55ar@gmail.com}
+  s.authors = ["Nicolas Santa"]
+  s.date = "2012-04-27"
+  s.description = "A Gem for Facebook Open Graph API"
+  s.email = "nicolas55ar@gmail.com"
   s.extra_rdoc_files = [
     "README",
     "README.textile"
@@ -32,10 +32,13 @@ Gem::Specification.new do |s|
     "lib/fbgraph/cacert.pem",
     "lib/fbgraph/canvas.rb",
     "lib/fbgraph/client.rb",
+    "lib/fbgraph/fql.rb",
+    "lib/fbgraph/logger.rb",
     "lib/fbgraph/realtime.rb",
     "lib/fbgraph/result.rb",
     "lib/fbgraph/search.rb",
     "lib/fbgraph/selection.rb",
+    "lib/fbgraph/timeline.rb",
     "specs/lib/fbauth/authorization_spec.rb",
     "specs/lib/fbauth/base_spec.rb",
     "specs/lib/fbauth/canvas_spec.rb",
@@ -45,11 +48,11 @@ Gem::Specification.new do |s|
     "specs/lib/fbauth/selection_spec.rb",
     "specs/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/nsanta/fbgraph}
-  s.licenses = [%q{MIT}]
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.5}
-  s.summary = %q{A Gem for Facebook Open Graph API}
+  s.homepage = "http://github.com/nsanta/fbgraph"
+  s.licenses = ["MIT"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.21"
+  s.summary = "A Gem for Facebook Open Graph API"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
