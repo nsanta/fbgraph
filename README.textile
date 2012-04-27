@@ -227,6 +227,18 @@ Examples:
 notextile. <code> results = client.realtime.user.delete!</code>
 
 
+h3. FQL
+
+h4. client.fql.query("SELECT name FROM user WHERE uid = me()")
+
+
+h3. Timeline
+
+h4. client.timeline.action('namespace', 'run').param(:location => [location object URL])
+
+h4. client.timeline.reads.param(:article => [article object URL] )
+
+
 h3. Analytics
 
 h4. TODO
