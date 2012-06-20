@@ -13,7 +13,8 @@ module FBGraph
                           likes inbox outbox updates accounts checkins
                           friendlists platformrequests threads participants
                           former_participants senders messages insights
-                          subscriptions payments apprequests reviews).freeze
+                          subscriptions payments apprequests reviews 
+                          mutualfriends).freeze
 
     OBJECTS.each do |object|
       class_eval  <<-METHOD
