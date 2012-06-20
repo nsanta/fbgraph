@@ -283,4 +283,4 @@ h2. Contributors List
 
 "Matias Käkelä":http://github.com/massive
 
-h4.
+"Max De Marzi":http://github.com/maxdemarzi
