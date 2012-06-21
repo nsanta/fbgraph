@@ -14,7 +14,7 @@ module FBGraph
                           friendlists platformrequests threads participants
                           former_participants senders messages insights
                           subscriptions payments apprequests reviews 
-                          mutualfriends).freeze
+                          mutualfriends family).freeze
 
     OBJECTS.each do |object|
       class_eval  <<-METHOD
