@@ -13,7 +13,8 @@ module FBGraph
                           likes inbox outbox updates accounts checkins
                           friendlists platformrequests threads participants
                           former_participants senders messages insights
-                          subscriptions payments apprequests reviews).freeze
+                          subscriptions payments apprequests reviews 
+                          mutualfriends family).freeze
 
     OBJECTS.each do |object|
       class_eval  <<-METHOD
@@ -26,8 +27,8 @@ module FBGraph
 
     CONNECTION_TYPES.each do |object|
       class_eval  <<-METHOD
-        def #{object}
-          connection('#{object}')
+        def #{object}(connection_id = nil)
+          connection(['#{object}', connection_id])
           self
         end
       METHOD
@@ -36,12 +37,6 @@ module FBGraph
 
     def me
       find('me')
-    end
-
-
-    def action(namespace,action)
-      connection([namespace,action].join(':'))
-      self
     end
 
     def metadata

@@ -17,6 +17,9 @@ require 'fbgraph/selection'
 require 'fbgraph/search'
 require 'fbgraph/realtime'
 require 'fbgraph/canvas'
+require 'fbgraph/logger'
+require 'fbgraph/fql'
+require 'fbgraph/timeline'
 
 module FBGraph
   @config = nil

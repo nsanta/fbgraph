@@ -31,7 +31,7 @@ h2. Example Apps
 
 h2. Usage
 
-p. FBGraph supports the most (no analytics yet) features of Facebook Open Graph API: developers.facebook.com/docs/reference/api/
+p. FBGraph supports most (no analytics yet) features of Facebook Open Graph API: developers.facebook.com/docs/reference/api/
 
 **IMPORTANT!!**  Facebook object IDs can be very large numbers--too large to fit in a regular SQL "INTEGER" column.  If you use an integer column, your database will likely just store the largest number allowed resulting in a bug that may confound you beyond belief.
 
@@ -81,7 +81,7 @@ h2. TODO
 
 h3. Canvas
 
-Facebook send a segned_request as a parameter. Can be decoded with the method parse_signed_request of FBGraph::Canvas module
+Facebook send a signed_request as a parameter. Can be decoded with the method parse_signed_request of FBGraph::Canvas module
 
 > FBGraph::Canvas.parse_signed_request(app_secret, params[:signed_request])
 
@@ -227,6 +227,18 @@ Examples:
 notextile. <code> results = client.realtime.user.delete!</code>
 
 
+h3. FQL
+
+h4. client.fql.query("SELECT name FROM user WHERE uid = me()")
+
+
+h3. Timeline
+
+h4. client.timeline.action('namespace', 'run').param(:location => [location object URL])
+
+h4. client.timeline.reads.param(:article => [article object URL] )
+
+
 h3. Analytics
 
 h4. TODO
@@ -271,4 +283,4 @@ h2. Contributors List
 
 "Matias Käkelä":http://github.com/massive
 
-h4.
+"Max De Marzi":http://github.com/maxdemarzi

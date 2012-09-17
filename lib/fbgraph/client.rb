@@ -38,6 +38,14 @@ module FBGraph
       FBGraph::Realtime.new(self)
     end
     
+    def fql
+      FBGraph::FQL.new(self)
+    end
+    
+    def timeline
+      FBGraph::Timeline.new(self)
+    end
+    
     def oauth_client
       OAuth2::Client.new(client_id, secret_id,
           :site => { :url => facebook_uri },
