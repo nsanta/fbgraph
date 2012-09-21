@@ -16,4 +16,5 @@ build/*
 profile
 vendor/*
 gemspec/*
+.rvmrc
 .rbenv-version
