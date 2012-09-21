@@ -284,3 +284,7 @@ h2. Contributors List
 "Matias Käkelä":http://github.com/massive
 
 "Max De Marzi":http://github.com/maxdemarzi
+
+"Peter Boling":https://github.com/pboling
+
+"Roberto Miranda":https://github.com/robertomiranda
