@@ -28,8 +28,8 @@ module FBGraph
       self
     end
 
-    def veryfy_token(token)
-      @params[:veryfy_token] = token
+    def verify_token(token)
+      @params[:verify_token] = token
       self
     end 
 
