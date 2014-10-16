@@ -1,9 +1,9 @@
 module FBGraph
-  
+
   class Client
 
     attr_accessor :client_id , :secret_id , :facebook_uri , :access_token , :consumer , :auth , :logger
-      
+
     def initialize(options = {})
       @client_id = options[:client_id] || FBGraph.config[:client_id]
       @secret_id = options[:secret_id] || FBGraph.config[:secret_id]
@@ -15,7 +15,7 @@ module FBGraph
       @logger = options[:logger] || FBGraph::Logger
       return true
     end
-    
+
     def set_token(new_token)
       @access_token = new_token
       @auth = OAuth2::AccessToken.new(oauth_client, @access_token)
@@ -25,27 +25,27 @@ module FBGraph
     def authorization
       FBGraph::Authorization.new(self)
     end
-    
+
     def selection
       FBGraph::Selection.new(self)
     end
-    
+
     def search
       FBGraph::Search.new(self)
     end
-    
+
     def realtime
       FBGraph::Realtime.new(self)
     end
-    
+
     def fql
       FBGraph::FQL.new(self)
     end
-    
+
     def timeline
       FBGraph::Timeline.new(self)
     end
-    
+
     def oauth_client
       OAuth2::Client.new(client_id, secret_id,
           :site => { :url => facebook_uri },
@@ -57,7 +57,7 @@ module FBGraph
     def oauth_client_ssl_options
       { :ca_file => @ca_file, :verify => OpenSSL::SSL::VERIFY_PEER }
     end
-    
+
     def rest_client_ssl_options
       { :ssl_ca_file => @ca_file, :verify_ssl => OpenSSL::SSL::VERIFY_PEER }
     end
@@ -69,9 +69,11 @@ module FBGraph
 end
 
 # :nodoc: undo the clusterfuck that rest-client has done
-module Net
-  class HTTP
-    undef request
-    alias request __request__
+if Net::HTTP.method_defined? :__request__
+  module Net
+    class HTTP
+      undef request
+      alias request __request__
+    end
   end
 end
