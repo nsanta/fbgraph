@@ -18,13 +18,12 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
 
   s.extra_rdoc_files = [
-    "README",
+    "README.textile",
   ]
   s.files = [
     ".bundle/config",
     "Gemfile",
     "Manifest",
-    "README",
     "README.textile",
     "Rakefile",
     "TODO.list",
@@ -42,14 +41,14 @@ Gem::Specification.new do |s|
     "lib/fbgraph/search.rb",
     "lib/fbgraph/selection.rb",
     "lib/fbgraph/timeline.rb",
-    "specs/lib/fbauth/authorization_spec.rb",
-    "specs/lib/fbauth/base_spec.rb",
-    "specs/lib/fbauth/canvas_spec.rb",
-    "specs/lib/fbauth/client_spec.rb",
-    "specs/lib/fbauth/realtime_spec.rb",
-    "specs/lib/fbauth/search_spec.rb",
-    "specs/lib/fbauth/selection_spec.rb",
-    "specs/spec_helper.rb"
+    "spec/lib/fbauth/authorization_spec.rb",
+    "spec/lib/fbauth/base_spec.rb",
+    "spec/lib/fbauth/canvas_spec.rb",
+    "spec/lib/fbauth/client_spec.rb",
+    "spec/lib/fbauth/realtime_spec.rb",
+    "spec/lib/fbauth/search_spec.rb",
+    "spec/lib/fbauth/selection_spec.rb",
+    "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/nsanta/fbgraph"
   s.licenses = ["MIT"]
@@ -71,10 +70,9 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rake>, ["~> 0.9.2"])
       s.add_development_dependency(%q<bundler>, ["> 1.0.0"])
       s.add_development_dependency(%q<fakeweb>, ["~> 1.3.0"])
-      s.add_development_dependency(%q<rspec>, [">= 2.6.0"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.6"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, [">= 3.9.0"])
-      s.add_development_dependency(%q<redgreen>, ["~> 1.2.2"])
     else
       s.add_dependency(%q<activesupport>, [">= 0"])
       s.add_dependency(%q<hashie>, [">= 1.0.0"])
@@ -86,10 +84,9 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rake>, ["~> 0.9.2"])
       s.add_dependency(%q<bundler>, ["> 1.0.0"])
       s.add_dependency(%q<fakeweb>, ["~> 1.3.0"])
-      s.add_dependency(%q<rspec>, [">= 2.6.0"])
+      s.add_dependency(%q<rspec>, ["~> 2.6"])
       s.add_dependency(%q<simplecov>, [">= 0"])
       s.add_dependency(%q<rdoc>, [">= 3.9.0"])
-      s.add_dependency(%q<redgreen>, ["~> 1.2.2"])
     end
   else
     s.add_dependency(%q<activesupport>, [">= 0"])
@@ -102,10 +99,9 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rake>, ["~> 0.9.2"])
     s.add_dependency(%q<bundler>, ["> 1.0.0"])
     s.add_dependency(%q<fakeweb>, ["~> 1.3.0"])
-    s.add_dependency(%q<rspec>, [">= 2.6.0"])
+    s.add_dependency(%q<rspec>, ["~> 2.6"])
     s.add_dependency(%q<simplecov>, [">= 0"])
     s.add_dependency(%q<rdoc>, [">= 3.9.0"])
-    s.add_dependency(%q<redgreen>, ["~> 1.2.2"])
   end
 end
 
